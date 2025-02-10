@@ -10,12 +10,14 @@ import LogIn from "./pages/logIn/LogIn.jsx";
 import SignUp from "./pages/signUp/SignUp.jsx";
 import WorkoutBuilder from "./pages/workoutBuilder/WorkoutBuilder.jsx";
 import Search from "./pages/search/Search.jsx";
+import Header from "./components/ui/header/Header.jsx";
 
 function App() {
 
 
     return (
         <>
+            <Header/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/features" element={<Features/>}/>
