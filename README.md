@@ -2,7 +2,7 @@
 
 ## Inleiding
 
-![featureOne.png](public/featureOne.png)
+![featureOne.png](src/assets/pictures/featureOne.png)
 
 ## Benodigdheden
 Om deze applicatie lokaal te draaien, heb je het volgende nodig:
