@@ -1,16 +1,9 @@
 import './Home.css'
 import useBackground from "../../hooks/useBackground.js";
-import {useNavigate} from "react-router-dom";
 
 function Home() {
 
     useBackground("home-background");
-
-    const navigate = useNavigate();
-
-    const handleButtonClick = () => {
-        navigate("/workout-builder")
-    }
 
     return (
         <>
@@ -21,7 +14,7 @@ function Home() {
                     looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
                     distribution.
                 </p>
-                <button type="button" className="generate-button" onClick={handleButtonClick}>GENERATE YOUR WORKOUT</button>
+                <button type="button" className="generate-button">GENERATE YOUR WORKOUT</button>
             </div>
         </>
     );
