@@ -40,3 +40,7 @@
     width: 300px;
     height: 75px;
 }
+
+.generate-button:hover {
+    background-color: rgb(81, 114, 248);
+}
