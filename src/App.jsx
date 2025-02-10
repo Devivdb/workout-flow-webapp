@@ -11,6 +11,7 @@ import SignUp from "./pages/signUp/SignUp.jsx";
 import WorkoutBuilder from "./pages/workoutBuilder/WorkoutBuilder.jsx";
 import Search from "./pages/search/Search.jsx";
 import Header from "./components/ui/header/Header.jsx";
+import Footer from "./components/ui/footer/Footer.jsx";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/workout-builder" element={<WorkoutBuilder/>}/>
                 <Route path="/search" element={<Search/>}/>
             </Routes>
+            <Footer/>
         </>
     )
 }
