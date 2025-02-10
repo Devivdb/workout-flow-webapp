@@ -1,0 +1,19 @@
+.testimonials-background {
+    background: rgba(34, 41, 45, 100%);
+}
+
+.intro-text-testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin: 35px 35px 0 35px;
+}
+
+.intro-text-testimonials h1 {
+    font-family: montserrat, sans-serif;
+}
+
+.intro-text-testimonials p {
+    font-family: Inter, sans-serif;
+}
