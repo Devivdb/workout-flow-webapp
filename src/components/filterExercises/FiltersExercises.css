@@ -1,0 +1,42 @@
+.filters-block {
+    display: flex;
+    flex-direction: column;
+    background-color: #22292D;
+    border-radius: 10px;
+    width: 30%;
+    height: 800px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.muscle-svg {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.muscle-svg path {
+    fill: grey;
+    transition: fill 0.3s;
+    cursor: auto;
+}
+
+.muscle-svg .selected {
+    fill: red !important;
+}
+
+.equipment-options {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.equipment-item {
+    font-size: 20px;
+    font-family: Inter, sans-serif;
+    flex-wrap: wrap;
+}
+
+
+
+
+

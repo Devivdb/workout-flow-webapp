@@ -1,0 +1,40 @@
+
+
+.result {
+    background: #22292D;
+    padding: 20px;
+    width: 50%;
+    height: 800px;
+    overflow-y: auto;
+    scrollbar-color: #6C7DFFFF #22292D;
+    border-radius: 10px;
+
+}
+
+.outer {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.inner {
+    width: 400px;
+    border-radius: 5px;
+    border: 2px solid white;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.inner.clicked {
+    border-color: #6C7DFFFF;
+}
+
+.selected-exercises {
+    background-color: #22292D;
+    width: 30%;
+}
+
+
+
+
+

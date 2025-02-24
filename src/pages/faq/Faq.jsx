@@ -1,6 +1,6 @@
 import useBackground from "../../../../workout-flow-webapp/src/hooks/useBackground.js";
 import { useState } from "react";
-import halter from "../../../../workout-flow-webapp/src/assets/svg's/halter.svg"
+import halter from "../../assets/svg/halter.svg"
 import "./Faq.css";
 
 function Faq() {
@@ -14,7 +14,7 @@ function Faq() {
 
     const questions = [
         { question: "Why choose WorkoutFlow?", answer: "Because it simplifies your workout planning!" },
-        { question: "How can I create a workout routine?", answer: "Use the WorkoutFlow planner to add exercises and schedule them." },
+        { question: "How can I create a workout routine?", answer: "Use the WorkoutFlow planner to add exercisesContext and schedule them." },
         { question: "What is the Give Back program?", answer: "It’s a program to share workouts and tips with the community." },
         { question: "What are the upgrade options available?", answer: "You can choose between Basic, Pro, and Premium tiers." },
         { question: "Can you add a definition?", answer: "Yes, definitions can be added under the settings menu." },
@@ -30,7 +30,6 @@ function Faq() {
                     key={index}
                     className={`question ${activeQuestion === index ? "expanded" : ""}`}
                     onClick={() => toggleAnswer(index)}
-                    style={{ cursor: "pointer" }}
                 >
                     <div className="question-header">
                         <p>{question}</p>

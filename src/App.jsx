@@ -8,7 +8,7 @@ import Contact from "./pages/contact/Contact.jsx";
 import Faq from "./pages/faq/Faq.jsx";
 import LogIn from "./pages/logIn/LogIn.jsx";
 import SignUp from "./pages/signUp/SignUp.jsx";
-import WorkoutBuilder from "./pages/workoutBuilder/WorkoutBuilder.jsx";
+import WorkoutBuilder1 from "./pages/workoutBuilder/WorkoutBuilder1.jsx";
 import Search from "./pages/search/Search.jsx";
 import Header from "./components/ui/header/Header.jsx";
 import Footer from "./components/ui/footer/Footer.jsx";
@@ -28,7 +28,7 @@ function App() {
                 <Route path="/faq" element={<Faq/>}/>
                 <Route path="/log-in" element={<LogIn/>}/>
                 <Route path="/sign-Up" element={<SignUp/>}/>
-                <Route path="/workout-builder" element={<WorkoutBuilder/>}/>
+                <Route path="/workout-builder" element={<WorkoutBuilder1/>}/>
                 <Route path="/search" element={<Search/>}/>
             </Routes>
             <Footer/>
