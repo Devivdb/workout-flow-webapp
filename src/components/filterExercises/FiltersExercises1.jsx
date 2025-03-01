@@ -1,8 +1,7 @@
 import "./FiltersExercises.css";
 import {useContext, useEffect} from "react";
 import MuscleGroups from "/src/assets/svg/MuscleGroups.svg?react";
-import {MuscleContext} from "../../context/muscleContext/MuscleContext.jsx";
-import {ExercisesContext} from "../../context/exercisesContext/ExercisesContext.jsx";
+import {PrimaryMusclesContext} from "../../context/PrimaryMusclesContext/PrimaryMusclesContext.jsx";
 import {LevelContext} from "../../context/levelContext/LevelContext.jsx";
 import {EquipmentContext} from "../../context/equipmentContext/EquipmentContext.jsx";
 import {ForceContext} from "../../context/forceContext/ForceContext.jsx";
@@ -12,8 +11,7 @@ import {MechanicContext} from "../../context/mechanicContext/MechanicContext.jsx
 function FiltersExercises1() {
 
     /// Context
-    const {selectedMuscle, setSelectedMuscle} = useContext(MuscleContext)
-    const {exercises} = useContext(ExercisesContext)
+    const {selectedPrimaryMuscles, setSelectedPrimaryMuscles} = useContext(PrimaryMusclesContext)
     const {selectedLevel, setSelectedLevel} = useContext(LevelContext)
     const {selectedEquipment, setSelectedEquipment} = useContext(EquipmentContext)
     const {selectedForce, setSelectedForce} = useContext(ForceContext)
@@ -33,16 +31,16 @@ function FiltersExercises1() {
             el.classList.remove("selected");
         });
 
-        if (selectedMuscle) {
-            const selectedElements = document.querySelectorAll(`.${selectedMuscle}`);
+        if (selectedPrimaryMuscles) {
+            const selectedElements = document.querySelectorAll(`.${selectedPrimaryMuscles}`);
             selectedElements.forEach((el) => el.classList.add("selected"));
         }
-    }, [selectedMuscle]);
+    }, [selectedPrimaryMuscles]);
 
     const handleMuscleClick = (event) => {
         const clickedMuscle = event.target.classList[0];
         if (clickedMuscle) {
-            setSelectedMuscle(clickedMuscle);
+            setSelectedPrimaryMuscles(clickedMuscle);
         }
     };
 

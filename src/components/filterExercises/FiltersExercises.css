@@ -36,6 +36,20 @@
     flex-wrap: wrap;
 }
 
+.muscle-svg-target path {
+    fill: gray;
+    transition: fill 0.3s ease-in-out;
+}
+
+.highlight-primary {
+    fill: red !important;
+}
+
+.highlight-secondary {
+    fill: yellow !important;
+}
+
+
 
 
 

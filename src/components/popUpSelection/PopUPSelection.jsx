@@ -47,6 +47,8 @@ function PopUpSelection1() {
         const selected = clickedIndexes.map(index => ({
             name: filteredExercises[index]?.name,
             equipment: filteredExercises[index]?.equipment,
+            secondaryMuscles: filteredExercises[index]?.secondaryMuscles,
+            primaryMuscles: filteredExercises[index]?.primaryMuscles
         }));
 
         setSelectedExercises(selected);
@@ -82,6 +84,40 @@ function PopUpSelection1() {
         setActiveExercise((prev) => (prev === exerciseName ? null : exerciseName));
     };
 
+
+    useEffect(() => {
+        const svgElement = document.querySelector('.muscle-svg-target');
+        if (!svgElement) return;
+
+        svgElement.querySelectorAll('path').forEach(path => {
+            path.classList.remove('highlight-primary', 'highlight-secondary');
+        });
+
+        if (!activeExercise) return;
+
+        const activeExerciseData = selectedExercises.find(ex => ex.name === activeExercise);
+        if (!activeExerciseData) return;
+
+        if (activeExerciseData.primaryMuscles) {
+            activeExerciseData.primaryMuscles.forEach(muscleName => {
+                const muscleElements = svgElement.querySelectorAll(`.${muscleName.toLowerCase().replace(/ /g, '_')}`);
+                muscleElements.forEach(element => {
+                    element.classList.add('highlight-primary');
+                });
+            });
+        }
+
+        if (activeExerciseData.secondaryMuscles) {
+            activeExerciseData.secondaryMuscles.forEach(muscleName => {
+                const muscleElements = svgElement.querySelectorAll(`.${muscleName.toLowerCase().replace(/ /g, '_')}`);
+                muscleElements.forEach(element => {
+                    element.classList.add('highlight-secondary');
+                });
+            });
+        }
+    }, [activeExercise, selectedExercises]);
+
+
     return (
         <>
             <div className="result">
@@ -108,50 +144,50 @@ function PopUpSelection1() {
                 )}
             </div>
 
-                <div className="selected-exercises">
-                    <h3>Selected Exercises:</h3>
+            <div className="selected-exercises">
+                <h3>Selected Exercises:</h3>
+                <div>
+                    {selectedExercises.map((exercise, index) => (
+                        <p
+                            key={index}
+                            className="selectable-exercise"
+                            onClick={() => handleSelectedExerciseClick(exercise.name)}
+                            style={{cursor: "pointer", color: activeExercise === exercise.name}}
+                        >
+                            <b>{exercise.name}</b> ({exercise.equipment})
+                        </p>
+                    ))}
+                </div>
+            </div>
+
+            <div className="sets-section">
+                <div className="svg-container">
+                    <MuscleGroups className="muscle-svg-target"/>
+                </div>
+                <h3>Sets for: {activeExercise}</h3>
+                <button onClick={() => handleAddSet(activeExercise)}>Add Set</button>
+                {setsData[activeExercise]?.length > 0 && (
                     <div>
-                        {selectedExercises.map((exercise, index) => (
-                            <p
-                                key={index}
-                                className="selectable-exercise"
-                                onClick={() => handleSelectedExerciseClick(exercise.name)}
-                                style={{cursor: "pointer", color: activeExercise === exercise.name}}
-                            >
-                                <b>{exercise.name}</b> ({exercise.equipment})
-                            </p>
+                        {setsData[activeExercise].map((set, setIndex) => (
+                            <div key={setIndex} className="set-input">
+                                <input
+                                    type="number"
+                                    placeholder="Reps"
+                                    value={set.reps}
+                                    onChange={(e) => handleInputChange(activeExercise, setIndex, "reps", e.target.value)}
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="Weight"
+                                    value={set.weight}
+                                    onChange={(e) => handleInputChange(activeExercise, setIndex, "weight", e.target.value)}
+                                />
+                                <button onClick={() => handleDeleteSet(activeExercise, setIndex)}>Delete</button>
+                            </div>
                         ))}
                     </div>
-                </div>
-
-                <div className="sets-section">
-                    <div className="svg-container">
-                        <MuscleGroups className="muscle-svg"/>
-                    </div>
-                    <h3>Sets for: {activeExercise}</h3>
-                    <button onClick={() => handleAddSet(activeExercise)}>Add Set</button>
-                    {setsData[activeExercise]?.length > 0 && (
-                        <div>
-                            {setsData[activeExercise].map((set, setIndex) => (
-                                <div key={setIndex} className="set-input">
-                                    <input
-                                        type="number"
-                                        placeholder="Reps"
-                                        value={set.reps}
-                                        onChange={(e) => handleInputChange(activeExercise, setIndex, "reps", e.target.value)}
-                                    />
-                                    <input
-                                        type="number"
-                                        placeholder="Weight"
-                                        value={set.weight}
-                                        onChange={(e) => handleInputChange(activeExercise, setIndex, "weight", e.target.value)}
-                                    />
-                                    <button onClick={() => handleDeleteSet(activeExercise, setIndex)}>Delete</button>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
+                )}
+            </div>
         </>
     );
 }

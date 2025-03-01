@@ -1,7 +1,7 @@
 import "./WorkoutBuilder1.css";
 import useBackground from "../../hooks/useBackground.js";
 import {useContext, useEffect} from "react";
-import {MuscleContext} from "../../context/muscleContext/MuscleContext.jsx";
+import {PrimaryMusclesContext} from "../../context/PrimaryMusclesContext/PrimaryMusclesContext.jsx";
 import {ExercisesContext} from "../../context/exercisesContext/ExercisesContext.jsx";
 import fetchExercisesByEquipment from "../../services/api/fetchExercises.js";
 import FiltersExercises1 from "../../components/filterExercises/FiltersExercises1.jsx";
@@ -14,19 +14,18 @@ function WorkoutBuilder1() {
     useBackground("workout-builder-background");
 
     /// state
-    const { selectedMuscle } = useContext(MuscleContext)
+    const { selectedPrimaryMuscles } = useContext(PrimaryMusclesContext)
     const { setExercises } = useContext(ExercisesContext)
 
     ///////////////////// API fetch
     useEffect(() => {
         async function fetchData() {
-            const data = await fetchExercisesByEquipment(selectedMuscle);
+            const data = await fetchExercisesByEquipment(selectedPrimaryMuscles);
             setExercises(data);
         }
 
         fetchData();
-    }, [selectedMuscle]);
-
+    }, [selectedPrimaryMuscles]);
 
     return (
         <>
