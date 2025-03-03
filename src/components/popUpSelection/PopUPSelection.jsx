@@ -1,21 +1,15 @@
 import "./PopUpSelection.css";
-import {useContext, useEffect, useState} from "react";
-import {ExercisesContext} from "../../context/exercisesContext/ExercisesContext.jsx";
-import {LevelContext} from "../../context/levelContext/LevelContext.jsx";
-import {EquipmentContext} from "../../context/equipmentContext/EquipmentContext.jsx";
-import {ForceContext} from "../../context/forceContext/ForceContext.jsx";
-import {MechanicContext} from "../../context/mechanicContext/MechanicContext.jsx";
+import { useContext, useEffect, useState } from "react";
 import MuscleGroups from "../../assets/svg/MuscleGroups.svg?react";
+import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
 
 function PopUpSelection1() {
-
     /// Context
-    const {exercises} = useContext(ExercisesContext);
-    const {selectedLevel} = useContext(LevelContext);
-    const {selectedEquipment} = useContext(EquipmentContext);
-    const {selectedForce} = useContext(ForceContext);
-    const {selectedMechanic} = useContext(MechanicContext);
+    const {
+        activeFilters,
+
+    } = useContext(FiltersContext);
 
     /// State
     const [filteredExercises, setFilteredExercises] = useState([]);
@@ -26,15 +20,15 @@ function PopUpSelection1() {
 
     /// Hook
     useEffect(() => {
-        const filtered = exercises.filter(exercise =>
-            (selectedLevel === "all" || exercise.level === selectedLevel) &&
-            (selectedEquipment === "all" || exercise.equipment === selectedEquipment) &&
-            (selectedForce === "all" || exercise.force === selectedForce) &&
-            (selectedMechanic === "all" || exercise.mechanic === selectedMechanic)
+        const filtered = activeFilters.exercises.filter(exercise =>
+            (activeFilters.selectedLevel === "all" || exercise.level === activeFilters.selectedLevel) &&
+            (activeFilters.selectedEquipment === "all" || exercise.equipment === activeFilters.selectedEquipment) &&
+            (activeFilters.selectedForce === "all" || exercise.force === activeFilters.selectedForce) &&
+            (activeFilters.selectedMechanic === "all" || exercise.mechanic === activeFilters.selectedMechanic)
         );
 
         setFilteredExercises(filtered);
-    }, [selectedLevel, selectedEquipment, selectedForce, selectedMechanic, exercises]);
+    }, [activeFilters]);
 
     /// Functions
     const handleClick = (index) => {
@@ -43,6 +37,23 @@ function PopUpSelection1() {
         );
     };
 
+    const handleDeleteExercise = (exerciseName) => {
+        const indexToRemove = filteredExercises.findIndex(exercise => exercise.name === exerciseName);
+        if (indexToRemove !== -1) {
+            setClickedIndexes(prev => prev.filter(i => i !== indexToRemove));
+
+            setSetsData(prev => {
+                const { ...rest } = prev;
+                return rest;
+            });
+
+            if (activeExercise === exerciseName) {
+                setActiveExercise(null);
+            }
+        }
+    };
+
+    /// useEffect
     useEffect(() => {
         const selected = clickedIndexes.map(index => ({
             name: filteredExercises[index]?.name,
@@ -82,8 +93,20 @@ function PopUpSelection1() {
 
     const handleSelectedExerciseClick = (exerciseName) => {
         setActiveExercise((prev) => (prev === exerciseName ? null : exerciseName));
-    };
+        const exercises = document.querySelectorAll('.selectable-exercise');
 
+        exercises.forEach(exercise => {
+            exercise.classList.remove('active');
+        });
+
+        const clickedExercise = Array.from(exercises).find(
+            element => element.textContent.includes(exerciseName)
+        );
+
+        if (clickedExercise) {
+            clickedExercise.classList.add('active');
+        }
+    };
 
     useEffect(() => {
         const svgElement = document.querySelector('.muscle-svg-target');
@@ -117,77 +140,99 @@ function PopUpSelection1() {
         }
     }, [activeExercise, selectedExercises]);
 
-
     return (
         <>
-            <div className="result">
+            <section className="filters-block">
                 <h2>Filtered Exercises</h2>
-                {filteredExercises.length > 0 ? (
-                    <div className="outer">
-                        {filteredExercises.map((exercise, index) => (
-                            <div
-                                className={`inner ${clickedIndexes.includes(index) ? "clicked" : ""}`}
+                <div className="result">
+                    {filteredExercises.length > 0 ? (
+                        <div className="outer">
+                            {filteredExercises.map((exercise, index) => (
+                                <div
+                                    className={`inner ${clickedIndexes.includes(index) ? "clicked" : ""}`}
+                                    key={index}
+                                    onClick={() => handleClick(index)}
+                                >
+                                    <h3>{exercise.name}</h3>
+                                    <p><b>Equipment:</b> {exercise.equipment}</p>
+                                    <p><b>Level:</b> {exercise.level}</p>
+                                    <p><b>Force:</b> {exercise.force}</p>
+                                    <p><b>Mechanic:</b> {exercise.mechanic}</p>
+                                    <p><b>Muscle group:</b> {exercise.primaryMuscles[0]}</p>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <p>No exercises found or selected. Use the Search button to apply your filters.</p>
+                    )}
+                </div>
+            </section>
+
+            <section className="filters-block">
+                <div className="selected-exercises">
+                    <h2>Selected Exercises</h2>
+                    <div
+                        className="selected-exercises-wrapper"
+                    >
+                        {selectedExercises.map((exercise, index) => (
+                            <p
                                 key={index}
-                                onClick={() => handleClick(index)}
+                                className={`selectable-exercise ${activeExercise === exercise.name ? 'active' : ''}`}
+                                onClick={() => handleSelectedExerciseClick(exercise.name)}
+                                style={{ cursor: "pointer" }}
                             >
-                                <h3>{exercise.name}</h3>
-                                <p><b>Equipment:</b> {exercise.equipment}</p>
-                                <p><b>Level:</b> {exercise.level}</p>
-                                <p><b>Force:</b> {exercise.force}</p>
-                                <p><b>Mechanic:</b> {exercise.mechanic}</p>
-                                <p><b>Muscle group:</b> {exercise.primaryMuscles[0]}</p>
-                            </div>
+                                {exercise.name} ({exercise.equipment})
+                                <button
+                                    className="sel-rem-btn"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDeleteExercise(exercise.name);
+                                    }}>Remove</button>
+                            </p>
                         ))}
                     </div>
-                ) : (
-                    <p>No exercises found.</p>
-                )}
-            </div>
-
-            <div className="selected-exercises">
-                <h3>Selected Exercises:</h3>
-                <div>
-                    {selectedExercises.map((exercise, index) => (
-                        <p
-                            key={index}
-                            className="selectable-exercise"
-                            onClick={() => handleSelectedExerciseClick(exercise.name)}
-                            style={{cursor: "pointer", color: activeExercise === exercise.name}}
-                        >
-                            <b>{exercise.name}</b> ({exercise.equipment})
-                        </p>
-                    ))}
                 </div>
-            </div>
+            </section>
 
-            <div className="sets-section">
-                <div className="svg-container">
-                    <MuscleGroups className="muscle-svg-target"/>
-                </div>
-                <h3>Sets for: {activeExercise}</h3>
-                <button onClick={() => handleAddSet(activeExercise)}>Add Set</button>
-                {setsData[activeExercise]?.length > 0 && (
-                    <div>
-                        {setsData[activeExercise].map((set, setIndex) => (
-                            <div key={setIndex} className="set-input">
-                                <input
-                                    type="number"
-                                    placeholder="Reps"
-                                    value={set.reps}
-                                    onChange={(e) => handleInputChange(activeExercise, setIndex, "reps", e.target.value)}
-                                />
-                                <input
-                                    type="number"
-                                    placeholder="Weight"
-                                    value={set.weight}
-                                    onChange={(e) => handleInputChange(activeExercise, setIndex, "weight", e.target.value)}
-                                />
-                                <button onClick={() => handleDeleteSet(activeExercise, setIndex)}>Delete</button>
-                            </div>
-                        ))}
+            <section className="filters-block">
+                <div className="sets-section">
+                    <div className="svg-container">
+                        <MuscleGroups className="muscle-svg-target" />
                     </div>
-                )}
-            </div>
+                    <h2>Sets for: {activeExercise}</h2>
+                    {setsData[activeExercise]?.length > 0 && (
+                        <div className="add-sets">
+                            {setsData[activeExercise].map((set, setIndex) => (
+                                <div key={setIndex} className="set-input">
+                                    <input
+                                        type="number"
+                                        placeholder="Reps"
+                                        value={set.reps}
+                                        onChange={(e) => handleInputChange(activeExercise, setIndex, "reps", e.target.value)}
+                                    />
+                                    <input
+                                        type="number"
+                                        placeholder="Weight"
+                                        value={set.weight}
+                                        onChange={(e) => handleInputChange(activeExercise, setIndex, "weight", e.target.value)}
+                                    />
+                                    <button
+                                        className="sets-rem-btn"
+                                        onClick={() => handleDeleteSet(activeExercise, setIndex)}
+                                    >Remove</button>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    <button
+                        className="add-sets-btn"
+                        onClick={() => handleAddSet(activeExercise)}
+                        disabled={!activeExercise}
+                    >
+                        Add Set
+                    </button>
+                </div>
+            </section>
         </>
     );
 }

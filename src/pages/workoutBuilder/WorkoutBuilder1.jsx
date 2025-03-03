@@ -1,11 +1,10 @@
 import "./WorkoutBuilder1.css";
 import useBackground from "../../hooks/useBackground.js";
 import {useContext, useEffect} from "react";
-import {PrimaryMusclesContext} from "../../context/PrimaryMusclesContext/PrimaryMusclesContext.jsx";
-import {ExercisesContext} from "../../context/exercisesContext/ExercisesContext.jsx";
 import fetchExercisesByEquipment from "../../services/api/fetchExercises.js";
-import FiltersExercises1 from "../../components/filterExercises/FiltersExercises1.jsx";
+import FiltersExercises from "../../components/filterExercises/FiltersExercises.jsx";
 import PopUpSelection from "../../components/popUpSelection/PopUPSelection.jsx";
+import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
 
 function WorkoutBuilder1() {
@@ -13,9 +12,12 @@ function WorkoutBuilder1() {
     ///////////////////// Background
     useBackground("workout-builder-background");
 
-    /// state
-    const { selectedPrimaryMuscles } = useContext(PrimaryMusclesContext)
-    const { setExercises } = useContext(ExercisesContext)
+    /// Context
+    const {
+        selectedPrimaryMuscles,
+        setExercises,
+        resetFilters
+    } = useContext(FiltersContext)
 
     ///////////////////// API fetch
     useEffect(() => {
@@ -30,7 +32,7 @@ function WorkoutBuilder1() {
     return (
         <>
             <div className="workout-builder-container">
-                <FiltersExercises1/>
+                <FiltersExercises className="con"/>
                 <PopUpSelection/>
             </div>
         </>

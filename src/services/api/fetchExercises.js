@@ -12,13 +12,12 @@ async function fetchExercisesByEquipment(muscleGroupList) {
             }
         );
 
-        return response.data
+        return response.data;
 
     } catch (error) {
-        console.error("Error fetching exercisesContext:", error);
+        console.error("Error fetching exercises:", error);
         return [];
     }
 }
 
 export default fetchExercisesByEquipment;
-

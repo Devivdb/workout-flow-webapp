@@ -1,14 +1,31 @@
 .workout-builder-background {
-    background-image: linear-gradient(to right, rgb(108, 125, 255), rgb(99, 247, 195));
+    background-image: linear-gradient(to right, rgb(253, 146, 242), rgb(81, 114, 248));
+}
+
+.filters-block {
+    display: flex;
+    flex-direction: column;
+    background-color: #22292D;
+    border-radius: 50px;
+    width: 30%;
+    height: 800px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 10px;
+}
+
+.filters-block h2{
+    font-family: 'montserrat', sans-serif;
 }
 
 .workout-builder-container {
     color: white;
     padding: 20px;
-    border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    gap: 10px;
 }
 
 .extra {
@@ -27,7 +44,6 @@
     animation-name: ball;
 }
 
-/* Animation */
 @keyframes ring {
     from {
         stroke-dasharray: 0 257 0 0 1 0 0 258;
