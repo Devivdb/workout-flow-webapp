@@ -1,0 +1,158 @@
+.inner.clicked {
+    border-color: #6C7DFFFF;
+}
+
+.muscle-svg-target {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.muscle-svg-target path {
+    fill: gray;
+    transition: fill 0.3s ease-in-out;
+}
+
+.highlight-primary {
+    fill: red !important;
+}
+
+.highlight-secondary {
+    fill: yellow !important;
+}
+
+/*///////////*/
+
+.result {
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+
+/*///////////*/
+
+.outer {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.inner {
+    width: 350px;
+    border-radius: 5px;
+    border: 2px solid white;
+    transition: border-color 0.3s ease-in-out;
+    padding: 10px;
+}
+
+
+/*///////////*/
+
+.sel-rem-btn {
+    height: 39px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.sel-rem-btn:hover {
+    background: rgba(220, 53, 69, 0.5);
+}
+
+/*///////////*/
+
+.selectable-exercise {
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.selectable-exercise:last-child {
+    margin-bottom: 0;
+}
+
+.selectable-exercise.active {
+    border-color: #6C7DFFFF;
+}
+
+/*///////////*/
+
+.add-sets div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 30px;
+}
+
+.set-input input {
+    background: #444;
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    max-width: 100px;
+}
+
+.sets-rem-btn {
+    height: 39px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.sets-rem-btn:hover{
+    background: rgba(220, 53, 69, 0.5);
+
+}
+
+.add-sets-btn {
+    margin-top: 10px;
+    height: 39px;
+    width: 110px;
+    background: #63F7C3;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 20px;
+    transition: background 0.2s ease;
+}
+
+.add-sets-btn:hover {
+    background: rgba(99, 247, 195, 0.5);
+}
+
+/*/////*/
+
+.add-sets {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+/*/////*/
+
+.selectable-exercise {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+
+
+
+
+

@@ -1,0 +1,144 @@
+.muscle-svg {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.muscle-svg path {
+    fill: grey;
+    transition: fill 0.3s;
+    cursor: auto;
+}
+
+.muscle-svg .selected {
+    fill: red !important;
+}
+
+.outer-wapper-filters{
+    display: flex;
+    flex-direction: row;
+    font-family: 'Inter', sans-serif;
+}
+
+.equipment-options {
+    display: flex;
+    flex-direction: column;
+    min-width: 174px;
+}
+
+.drop-down-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.level-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Inter, sans-serif;
+    margin: 5px;
+}
+
+.level-button.active {
+    background-color: #63F7C3;
+    color: black;
+}
+.level-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.level-button:hover {
+    background-color: #666;
+}
+
+
+/*//////*/
+
+.drop-down-menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.drop-down-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.drop-down-menu-items {
+    padding-left: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #444444;
+    border: none;
+    border-radius: 10px;
+    height: 25px;
+    width: 100px;
+}
+
+.reset-filters-btn {
+    height: 39px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+/*//////*/
+
+.apply-rest-btn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.reset-filters-btn, .search-btn {
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reset-filters-btn {
+    background-color: #5172F8FF;
+    border: none;
+    color: black;
+    height: 39px;
+}
+
+.reset-filters-btn:hover {
+    background-color: rgba(81, 114, 248, 0.5);
+}
+
+.search-btn {
+    background-color: #63F7C3FF;
+    border: none;
+    color: black;
+    height: 39px;
+}
+
+.search-btn:hover:not(:disabled) {
+    background-color: rgba(99, 247, 195, 0.60);
+}
+
+.search-btn:disabled {
+    background-color: rgba(99, 247, 195, 0.48);
+    cursor: not-allowed;
+}
+
+.search-btn.has-changes {
+    animation: pulse 1s infinite alternate;
+}
+
+
+
