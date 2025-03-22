@@ -44,6 +44,28 @@
     animation-name: ball;
 }
 
+.export-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 20px;
+    padding-right: 4%;
+}
+
+.export-buttons button {
+    border-radius: 50px;
+    width: 110px;
+    height: 39px;
+    cursor: pointer;
+    background-color: #63F7C3FF;
+}
+
+.export-buttons button:hover {
+    background: rgba(99, 247, 195, 0.5);
+}
+
+
 @keyframes ring {
     from {
         stroke-dasharray: 0 257 0 0 1 0 0 258;

@@ -7,7 +7,6 @@ import ExerciseDetailPanel from './ExerciseDetailPanel.jsx';
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
 function PopUpSelection() {
-    //TODO: Add export buttons for PDF, CSV and JSON
 
     /// Context
     const {
@@ -62,14 +61,12 @@ function PopUpSelection() {
                 selectedExercises={selectedExercises}
                 onExerciseSelection={handleExerciseSelection}
             />
-
             <SelectedExercisesList
                 selectedExercises={selectedExercises}
                 activeExercise={activeExercise}
                 onExerciseClick={handleSelectedExerciseClick}
                 onDeleteExercise={handleDeleteExercise}
             />
-
             <ExerciseDetailPanel
                 activeExercise={activeExercise}
                 selectedExercises={selectedExercises}
