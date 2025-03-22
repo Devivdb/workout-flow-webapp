@@ -3,18 +3,19 @@ import { useContext, useEffect, useState } from "react";
 import MuscleGroups from "../../assets/svg/MuscleGroups.svg?react";
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
+function PopUpSelection() {
+    //TODO 1. Make sure the selected exercises stay selected even when the filter is changed! ✓
+    //TODO 2. Code split into new components
+    //TODO 3. Add export buttons for PDF, CSV and JSON
 
-function PopUpSelection1() {
     /// Context
     const {
-        activeFilters,
-
+        activeFilters
     } = useContext(FiltersContext);
 
     /// State
     const [filteredExercises, setFilteredExercises] = useState([]);
     const [selectedExercises, setSelectedExercises] = useState([]);
-    const [clickedIndexes, setClickedIndexes] = useState([]);
     const [setsData, setSetsData] = useState({});
     const [activeExercise, setActiveExercise] = useState(null);
 
@@ -31,39 +32,39 @@ function PopUpSelection1() {
     }, [activeFilters]);
 
     /// Functions
-    const handleClick = (index) => {
-        setClickedIndexes(prev =>
-            prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
-        );
+    const handleExerciseSelection = (exercise) => {
+        setSelectedExercises(prev => {
+            const isSelected = prev.some(ex => ex.name === exercise.name);
+
+            if (isSelected) {
+                return prev.filter(ex => ex.name !== exercise.name);
+            } else {
+                return [...prev, {
+                    name: exercise.name,
+                    equipment: exercise.equipment,
+                    secondaryMuscles: exercise.secondaryMuscles,
+                    primaryMuscles: exercise.primaryMuscles,
+                    level: exercise.level,
+                    force: exercise.force,
+                    mechanic: exercise.mechanic
+                }];
+            }
+        });
     };
 
     const handleDeleteExercise = (exerciseName) => {
-        const indexToRemove = filteredExercises.findIndex(exercise => exercise.name === exerciseName);
-        if (indexToRemove !== -1) {
-            setClickedIndexes(prev => prev.filter(i => i !== indexToRemove));
+        setSelectedExercises(prev => prev.filter(ex => ex.name !== exerciseName));
 
-            setSetsData(prev => {
-                const { ...rest } = prev;
-                return rest;
-            });
 
-            if (activeExercise === exerciseName) {
-                setActiveExercise(null);
-            }
+        setSetsData(prev => {
+            const { [exerciseName]: _, ...rest } = prev;
+            return rest;
+        });
+
+        if (activeExercise === exerciseName) {
+            setActiveExercise(null);
         }
     };
-
-    /// useEffect
-    useEffect(() => {
-        const selected = clickedIndexes.map(index => ({
-            name: filteredExercises[index]?.name,
-            equipment: filteredExercises[index]?.equipment,
-            secondaryMuscles: filteredExercises[index]?.secondaryMuscles,
-            primaryMuscles: filteredExercises[index]?.primaryMuscles
-        }));
-
-        setSelectedExercises(selected);
-    }, [clickedIndexes, filteredExercises]);
 
     const handleAddSet = (exerciseName) => {
         setSetsData((prev) => ({
@@ -147,20 +148,24 @@ function PopUpSelection1() {
                 <div className="result">
                     {filteredExercises.length > 0 ? (
                         <div className="outer">
-                            {filteredExercises.map((exercise, index) => (
-                                <div
-                                    className={`inner ${clickedIndexes.includes(index) ? "clicked" : ""}`}
-                                    key={index}
-                                    onClick={() => handleClick(index)}
-                                >
-                                    <h3>{exercise.name}</h3>
-                                    <p><b>Equipment:</b> {exercise.equipment}</p>
-                                    <p><b>Level:</b> {exercise.level}</p>
-                                    <p><b>Force:</b> {exercise.force}</p>
-                                    <p><b>Mechanic:</b> {exercise.mechanic}</p>
-                                    <p><b>Muscle group:</b> {exercise.primaryMuscles[0]}</p>
-                                </div>
-                            ))}
+                            {filteredExercises.map((exercise, index) => {
+                                const isSelected = selectedExercises.some(ex => ex.name === exercise.name);
+
+                                return (
+                                    <div
+                                        className={`inner ${isSelected ? "clicked" : ""}`}
+                                        key={index}
+                                        onClick={() => handleExerciseSelection(exercise)}
+                                    >
+                                        <h3>{exercise.name}</h3>
+                                        <p><b>Equipment:</b> {exercise.equipment}</p>
+                                        <p><b>Level:</b> {exercise.level}</p>
+                                        <p><b>Force:</b> {exercise.force}</p>
+                                        <p><b>Mechanic:</b> {exercise.mechanic}</p>
+                                        <p><b>Muscle group:</b> {exercise.primaryMuscles[0]}</p>
+                                    </div>
+                                );
+                            })}
                         </div>
                     ) : (
                         <p>No exercises found or selected. Use the Search button to apply your filters.</p>
@@ -171,25 +176,27 @@ function PopUpSelection1() {
             <section className="filters-block">
                 <div className="selected-exercises">
                     <h2>Selected Exercises</h2>
-                    <div
-                        className="selected-exercises-wrapper"
-                    >
-                        {selectedExercises.map((exercise, index) => (
-                            <p
-                                key={index}
-                                className={`selectable-exercise ${activeExercise === exercise.name ? 'active' : ''}`}
-                                onClick={() => handleSelectedExerciseClick(exercise.name)}
-                                style={{ cursor: "pointer" }}
-                            >
-                                {exercise.name} ({exercise.equipment})
-                                <button
-                                    className="sel-rem-btn"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleDeleteExercise(exercise.name);
-                                    }}>Remove</button>
-                            </p>
-                        ))}
+                    <div className="selected-exercises-wrapper">
+                        {selectedExercises.length > 0 ? (
+                            selectedExercises.map((exercise, index) => (
+                                <p
+                                    key={index}
+                                    className={`selectable-exercise ${activeExercise === exercise.name ? 'active' : ''}`}
+                                    onClick={() => handleSelectedExerciseClick(exercise.name)}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    {exercise.name} ({exercise.equipment})
+                                    <button
+                                        className="sel-rem-btn"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleDeleteExercise(exercise.name);
+                                        }}>Remove</button>
+                                </p>
+                            ))
+                        ) : (
+                            <p>No exercises selected. Click on exercises in the filtered list to select them.</p>
+                        )}
                     </div>
                 </div>
             </section>
@@ -199,8 +206,8 @@ function PopUpSelection1() {
                     <div className="svg-container">
                         <MuscleGroups className="muscle-svg-target" />
                     </div>
-                    <h2>Sets for: {activeExercise}</h2>
-                    {setsData[activeExercise]?.length > 0 && (
+                    <h2>Sets for: {activeExercise || "Select an exercise"}</h2>
+                    {activeExercise && setsData[activeExercise]?.length > 0 && (
                         <div className="add-sets">
                             {setsData[activeExercise].map((set, setIndex) => (
                                 <div key={setIndex} className="set-input">
@@ -237,4 +244,4 @@ function PopUpSelection1() {
     );
 }
 
-export default PopUpSelection1;
+export default PopUpSelection;
