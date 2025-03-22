@@ -4,9 +4,8 @@ import MuscleGroups from "../../assets/svg/MuscleGroups.svg?react";
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
 function PopUpSelection() {
-    //TODO 1. Make sure the selected exercises stay selected even when the filter is changed! ✓
-    //TODO 2. Code split into new components
-    //TODO 3. Add export buttons for PDF, CSV and JSON
+    //TODO: Code split into new components
+    //TODO:  Add export buttons for PDF, CSV and JSON
 
     /// Context
     const {
@@ -174,9 +173,8 @@ function PopUpSelection() {
             </section>
 
             <section className="filters-block">
-                <div className="selected-exercises">
                     <h2>Selected Exercises</h2>
-                    <div className="selected-exercises-wrapper">
+                    <div className="result">
                         {selectedExercises.length > 0 ? (
                             selectedExercises.map((exercise, index) => (
                                 <p
@@ -198,7 +196,6 @@ function PopUpSelection() {
                             <p>No exercises selected. Click on exercises in the filtered list to select them.</p>
                         )}
                     </div>
-                </div>
             </section>
 
             <section className="filters-block">

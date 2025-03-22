@@ -83,7 +83,6 @@ export function FiltersProvider({ children }) {
                 applyFilters,
                 resetFilters,
 
-                // Utility to check if pending filters differ from active
                 hasChanges: JSON.stringify(pendingFilters) !== JSON.stringify(activeFilters)
             }}
         >
