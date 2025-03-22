@@ -3,7 +3,7 @@ import useBackground from "../../hooks/useBackground.js";
 import {useContext, useEffect} from "react";
 import fetchExercisesByEquipment from "../../services/api/fetchExercises.js";
 import FiltersExercises from "../../components/filterExercises/FiltersExercises.jsx";
-import PopUpSelection from "../../components/popUpSelection/PopUPSelection.jsx";
+import PopUpSelection from "../../components/ExerciseSelectionPanel/ExerciseSelectionPanel.jsx";
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
 
