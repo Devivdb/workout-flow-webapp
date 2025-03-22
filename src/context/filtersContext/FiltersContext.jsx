@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 export const FiltersContext = createContext();
 
 export function FiltersProvider({ children }) {
-    // Active filters (applied when search is clicked)
     const [activeFilters, setActiveFilters] = useState({
         selectedPrimaryMuscles: null,
         selectedSecondaryMuscles: null,
@@ -14,7 +13,6 @@ export function FiltersProvider({ children }) {
         exercises: []
     });
 
-    // Current filter selections (not yet applied)
     const [pendingFilters, setPendingFilters] = useState({
         selectedPrimaryMuscles: null,
         selectedSecondaryMuscles: null,
@@ -25,7 +23,11 @@ export function FiltersProvider({ children }) {
         exercises: []
     });
 
-    // Helper function to update a pending filter
+    const [filteredExercises, setFilteredExercises] = useState([]);
+    const [selectedExercises, setSelectedExercises] = useState([]);
+    const [setsData, setSetsData] = useState({});
+    const [activeExercise, setActiveExercise] = useState(null);
+
     const updatePendingFilter = (filterName, value) => {
         setPendingFilters(prevFilters => ({
             ...prevFilters,
@@ -33,7 +35,6 @@ export function FiltersProvider({ children }) {
         }));
     };
 
-    // Helper functions for specific pending filters
     const setSelectedPrimaryMuscles = (value) => updatePendingFilter('selectedPrimaryMuscles', value);
     const setSelectedSecondaryMuscles = (value) => updatePendingFilter('selectedSecondaryMuscles', value);
     const setSelectedLevel = (value) => updatePendingFilter('selectedLevel', value);
@@ -42,12 +43,10 @@ export function FiltersProvider({ children }) {
     const setSelectedMechanic = (value) => updatePendingFilter('selectedMechanic', value);
     const setExercises = (value) => updatePendingFilter('exercises', value);
 
-    // Apply the pending filters to become active
     const applyFilters = () => {
         setActiveFilters({...pendingFilters});
     };
 
-    // Reset all filters to their default values
     const resetFilters = () => {
         const defaultFilters = {
             selectedPrimaryMuscles: null,
@@ -63,10 +62,72 @@ export function FiltersProvider({ children }) {
         setActiveFilters(defaultFilters);
     };
 
+    const handleExerciseSelection = (exercise) => {
+        setSelectedExercises(prev => {
+            const isSelected = prev.some(ex => ex.name === exercise.name);
+
+            if (isSelected) {
+                return prev.filter(ex => ex.name !== exercise.name);
+            } else {
+                return [...prev, {
+                    name: exercise.name,
+                    equipment: exercise.equipment,
+                    secondaryMuscles: exercise.secondaryMuscles,
+                    primaryMuscles: exercise.primaryMuscles,
+                    level: exercise.level,
+                    force: exercise.force,
+                    mechanic: exercise.mechanic
+                }];
+            }
+        });
+    };
+
+    const handleDeleteExercise = (exerciseName) => {
+        setSelectedExercises(prev => prev.filter(ex => ex.name !== exerciseName));
+
+        setSetsData(prev => {
+            const { [exerciseName]: _, ...rest } = prev;
+            return rest;
+        });
+
+        if (activeExercise === exerciseName) {
+            setActiveExercise(null);
+        }
+    };
+
+    const handleSelectedExerciseClick = (exerciseName) => {
+        setActiveExercise((prev) => (prev === exerciseName ? null : exerciseName));
+    };
+
+    const handleAddSet = (exerciseName) => {
+        setSetsData((prev) => ({
+            ...prev,
+            [exerciseName]: [...(prev[exerciseName] || []), { reps: "", weight: "" }]
+        }));
+    };
+
+    const handleInputChange = (exerciseName, setIndex, field, value) => {
+        setSetsData((prev) => ({
+            ...prev,
+            [exerciseName]: prev[exerciseName].map((set, index) =>
+                index === setIndex ? { ...set, [field]: value } : set
+            )
+        }));
+    };
+
+    const handleDeleteSet = (exerciseName, setIndex) => {
+        setSetsData((prev) => {
+            const updatedSets = prev[exerciseName].filter((_, index) => index !== setIndex);
+            return {
+                ...prev,
+                [exerciseName]: updatedSets,
+            };
+        });
+    };
+
     return (
         <FiltersContext.Provider
             value={{
-                // Both filter states
                 ...pendingFilters,
                 activeFilters,
 
@@ -83,7 +144,22 @@ export function FiltersProvider({ children }) {
                 applyFilters,
                 resetFilters,
 
-                hasChanges: JSON.stringify(pendingFilters) !== JSON.stringify(activeFilters)
+                hasChanges: JSON.stringify(pendingFilters) !== JSON.stringify(activeFilters),
+
+                // Exercise selection state
+                filteredExercises,
+                setFilteredExercises,
+                selectedExercises,
+                activeExercise,
+                setsData,
+
+                // Exercise selection handlers
+                handleExerciseSelection,
+                handleDeleteExercise,
+                handleSelectedExerciseClick,
+                handleAddSet,
+                handleInputChange,
+                handleDeleteSet
             }}
         >
             {children}
