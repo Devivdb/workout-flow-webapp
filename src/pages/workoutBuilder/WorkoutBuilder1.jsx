@@ -9,6 +9,8 @@ import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
 function WorkoutBuilder1() {
 
+    //TODO Implement a new navbar on the right side with icons.
+
     ///////////////////// Background
     useBackground("workout-builder-background");
 

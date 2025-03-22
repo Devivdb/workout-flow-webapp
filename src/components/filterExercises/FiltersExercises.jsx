@@ -4,9 +4,8 @@ import MuscleGroups from "/src/assets/svg/MuscleGroups.svg?react";
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
 function FiltersExercises() {
-    // Using the unified context
+
     const {
-        // Pending filter values (shown in UI)
         selectedPrimaryMuscles,
         setSelectedPrimaryMuscles,
         selectedLevel,
