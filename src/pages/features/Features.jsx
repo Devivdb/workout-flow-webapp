@@ -1,6 +1,6 @@
 import './Features.css'
 import useBackground from "../../../../workout-flow-webapp/src/hooks/useBackground.js";
-import featureOne from "../../../../workout-flow-webapp/src/assets/pictures/featureOne.png"
+import featureOne from "../../assets/pictures/featureOne.png"
 import featureTwo from "../../../../workout-flow-webapp/src/assets/pictures/featureTwo.png"
 import {useState} from "react";
 
