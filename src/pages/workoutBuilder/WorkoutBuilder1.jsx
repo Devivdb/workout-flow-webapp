@@ -74,32 +74,45 @@ function WorkoutBuilder1() {
         saveAs(blob, "workout.csv");
     };
 
-    //TODO add styling to pdf file and make the list of exercises more clear
-
     const exportAsPDF = () => {
         const data = formatWorkoutData();
         const doc = new jsPDF();
-        doc.setFontSize(14);
+        doc.setFontSize(25);
+        doc.setFont("montserrat, sans-serif", "Bold")
         doc.text("Workout Plan", 10, 10);
 
         let y = 20;
         data.forEach((exercise, index) => {
-            doc.setFontSize(12);
+            doc.setFont("inter sans-serif", 'normal');
+            doc.setFontSize(15);
             doc.text(`${index + 1}. ${exercise.name}`, 10, y);
             doc.setFontSize(10);
-            doc.text(`- Equipment: ${exercise.equipment}`, 10, y + 5);
-            doc.text(`- Level: ${exercise.level}`, 10, y + 10);
-            doc.text(`- Force: ${exercise.force}`, 10, y + 15);
-            doc.text(`- Muscle: ${exercise.muscle}`, 10, y + 20);
-            doc.text(`- Mechanic: ${exercise.mechanic}`, 10, y + 25);
 
-            // Format sets properly
-            const setsText = exercise.sets.length > 0
-                ? exercise.sets.join(" | ")
-                : "None";
-            doc.text(`- Sets: ${setsText}`, 10, y + 30);
+            const getInfoOrDefault = (value) => value !== undefined ? value : "Information not available";
 
-            y += 40;
+            doc.text(`- Equipment: ${getInfoOrDefault(exercise.equipment)}`, 10, y + 5);
+            doc.text(`- Level: ${getInfoOrDefault(exercise.level)}`, 10, y + 10);
+            doc.text(`- Force: ${getInfoOrDefault(exercise.force)}`, 10, y + 15);
+            doc.text(`- Muscle: ${getInfoOrDefault(exercise.muscle)}`, 10, y + 20);
+            doc.text(`- Mechanic: ${getInfoOrDefault(exercise.mechanic)}`, 10, y + 25);
+
+            y += 30;
+            if (exercise.sets && exercise.sets.length > 0) {
+                doc.text("- Sets:", 10, y);
+                y += 5;
+                doc.setFont("inter sans-serif", 'normal');
+                doc.setFontSize(10);
+
+                exercise.sets.forEach((set, setIndex) => {
+                    doc.text(`  ${setIndex + 1}. ${set}`, 15, y);
+                    y += 5;
+                });
+            } else {
+                doc.text("- Sets: None", 10, y);
+                y += 5;
+            }
+
+            y += 10;
         });
 
         doc.save("workout plan.pdf");
