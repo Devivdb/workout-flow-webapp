@@ -126,7 +126,7 @@ function WorkoutBuilder1() {
                 <button onClick={exportAsPDF}>Export PDF</button>
             </div>
             <div className="workout-builder-container">
-                <FiltersExercises className="con"/>
+                <FiltersExercises/>
                 <PopUpSelection/>
             </div>
         </>

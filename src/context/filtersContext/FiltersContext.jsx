@@ -76,7 +76,8 @@ export function FiltersProvider({ children }) {
                     primaryMuscles: exercise.primaryMuscles,
                     level: exercise.level,
                     force: exercise.force,
-                    mechanic: exercise.mechanic
+                    mechanic: exercise.mechanic,
+                    instructions: exercise.instructions
                 }];
             }
         });
@@ -125,6 +126,10 @@ export function FiltersProvider({ children }) {
         });
     };
 
+    const shouldShowInstructions = (pageId) => {
+        return pageId === "page1";
+    };
+
     return (
         <FiltersContext.Provider
             value={{
@@ -159,7 +164,10 @@ export function FiltersProvider({ children }) {
                 handleSelectedExerciseClick,
                 handleAddSet,
                 handleInputChange,
-                handleDeleteSet
+                handleDeleteSet,
+
+                // Page id
+                shouldShowInstructions
             }}
         >
             {children}

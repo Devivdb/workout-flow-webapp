@@ -57,6 +57,7 @@ function PopUpSelection() {
     return (
         <>
             <FilteredExercisesList
+                pageId="page2"
                 filteredExercises={filteredExercises}
                 selectedExercises={selectedExercises}
                 onExerciseSelection={handleExerciseSelection}

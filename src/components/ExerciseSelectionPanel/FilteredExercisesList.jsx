@@ -1,12 +1,26 @@
-import React from 'react';
+import { useContext, useState } from 'react';
+import { FiltersContext } from '../../context/filtersContext/FiltersContext';
 
 function FilteredExercisesList({
                                    filteredExercises,
                                    selectedExercises,
-                                   onExerciseSelection
+                                   onExerciseSelection,
+                                   pageId
                                }) {
+    const { shouldShowInstructions } = useContext(FiltersContext);
+
+    const [expandedExerciseIndex, setExpandedExerciseIndex] = useState(null);
+
+    const toggleInstructions = (index) => {
+        if (expandedExerciseIndex === index) {
+            setExpandedExerciseIndex(null);
+        } else {
+            setExpandedExerciseIndex(index);
+        }
+    };
+
     return (
-        <section className="filters-block">
+        <section className="filters-block filters-results">
             <h2>Filtered Exercises</h2>
             <div className="result">
                 {filteredExercises.length > 0 ? (
@@ -26,6 +40,31 @@ function FilteredExercisesList({
                                     <p><b>Force:</b> {exercise.force}</p>
                                     <p><b>Mechanic:</b> {exercise.mechanic}</p>
                                     <p><b>Muscle group:</b> {exercise.primaryMuscles[0]}</p>
+
+                                    {shouldShowInstructions(pageId) && exercise.instructions && exercise.instructions.length > 0 && (
+                                        <>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    toggleInstructions(index);
+                                                }}
+                                                className="instructions-toggle"
+                                            >
+                                                {expandedExerciseIndex === index ? "Hide Instructions" : "Show Instructions"}
+                                            </button>
+
+                                            {expandedExerciseIndex === index && (
+                                                <div className="instructions">
+                                                    <p><b>Instructions:</b></p>
+                                                    <ol>
+                                                        {exercise.instructions.map((step, stepIndex) => (
+                                                            <li key={stepIndex}>{step}</li>
+                                                        ))}
+                                                    </ol>
+                                                </div>
+                                            )}
+                                        </>
+                                    )}
                                 </div>
                             );
                         })}
