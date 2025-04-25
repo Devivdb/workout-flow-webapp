@@ -3,10 +3,10 @@ import useBackground from "../../hooks/useBackground.js";
 import {useContext, useEffect} from "react";
 import fetchExercisesByEquipment from "../../services/api/fetchExercises.js";
 import FiltersExercises from "../../components/filterExercises/FiltersExercises.jsx";
-import PopUpSelection from "../../components/ExerciseSelectionPanel/ExerciseSelectionPanel.jsx";
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 import { saveAs } from "file-saver";
 import jsPDF from "jspdf";
+import ExerciseSelectionPanel from "../../components/ExerciseSelectionPanel/ExerciseSelectionPanel.jsx";
 
 
 function WorkoutBuilder1() {
@@ -127,7 +127,7 @@ function WorkoutBuilder1() {
             </div>
             <div className="workout-builder-container">
                 <FiltersExercises/>
-                <PopUpSelection/>
+                <ExerciseSelectionPanel/>
             </div>
         </>
     );

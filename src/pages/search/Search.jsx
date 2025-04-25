@@ -6,6 +6,9 @@ import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
 function Search() {
 
+    // TODO Make a new state for Search to be able to select the filters and see the result of the filters
+    //TODO With new state make sure the filters have a default value
+
     /// Context
     const {
         filteredExercises,

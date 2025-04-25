@@ -7,6 +7,9 @@ function ExerciseSetsManager({
                                  onInputChange,
                                  onDeleteSet
                              }) {
+
+    //TODO Make sure that font color is white for more readability
+
     return (
         <div>
             <h2>Sets for: {activeExercise || "Select an exercise"}</h2>
