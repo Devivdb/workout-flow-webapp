@@ -1,12 +1,11 @@
 import "./ExerciseSelectionPanel.css";
 import { useContext, useEffect } from "react";
-
 import FilteredExercisesList from './FilteredExercisesList.jsx';
 import SelectedExercisesList from './SelectedExercisesList.jsx';
 import ExerciseDetailPanel from './ExerciseDetailPanel.jsx';
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
-function PopUpSelection() {
+function ExerciseSelectionPanel() {
 
     /// Context
     const {
@@ -79,4 +78,4 @@ function PopUpSelection() {
     );
 }
 
-export default PopUpSelection;
+export default ExerciseSelectionPanel;

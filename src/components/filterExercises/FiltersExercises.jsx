@@ -49,7 +49,7 @@ function FiltersExercises() {
 
     return (
         <>
-            <section className="filters-block">
+            <section className="filters-block filter-apply">
                 <h2>Filters</h2>
                 <div className="svg-container" onClick={handleMuscleClick}>
                     <MuscleGroups className="muscle-svg"/>
