@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import authService from '../../services/auth/authService';
 import './Profile.css';
+import useBackground from "../../hooks/useBackground.js";
 
 function Profile() {
     const { user } = useAuth();
@@ -120,6 +121,8 @@ function Profile() {
             setIsSubmitting(false);
         }
     };
+
+    useBackground("profile-background")
 
     return (
         <div className="profile-container">
