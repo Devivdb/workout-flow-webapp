@@ -1,39 +1,72 @@
-import './Footer.css'
-import {NavLink} from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+import './Footer.css';
 
-function Footer(){
+function Footer() {
+    const { isAuth } = useAuth();
+
     return (
-        <>
-            <footer className="footer">
-                <div className="footer-container">
+        <footer className="footer">
+            <div className="footer-container">
+                <div className="footer-sections">
+                    <div className="footer-section">
+                        <h4>WorkoutFlow</h4>
+                        <p>Your personal fitness assistant that helps you achieve your fitness goals.</p>
+                    </div>
                     <div className="footer-text">
-                        <p>DESIGNED BY:</p>
-                        <p>Devi van den Broeke</p>
-                        <p>© 2024 – 2025 WorkoutFlow</p>
-                    </div>
-                    <div className="footer-links">
-                        <NavLink to="/" className="footer-link">Home</NavLink>
-                        <NavLink to="/features" className="footer-link">Features</NavLink>
-                        <NavLink to="/testimonials" className="footer-link">Testimonials</NavLink>
-                        <NavLink to="/highlights" className="footer-link">Highlights</NavLink>
-                        <NavLink to="/workout-builder" className="footer-link">Workout Builder</NavLink>
-                        <NavLink to="/search" className="footer-link">Exercise finder</NavLink>
-                    </div>
-                    <div className="footer-sections">
-                        <div className="footer-section">
-                            <h4>Contact</h4>
-                            <NavLink to="/contact" className="footer-link">Contact form</NavLink>
-                        </div>
-                        <div className="footer-section">
-                            <h4>Questions</h4>
-                            <NavLink to="/faq" className="footer-link">FAQ</NavLink>
-                        </div>
+                        <p>&copy; {new Date().getFullYear()} WorkoutFlow. All rights reserved.</p>
                     </div>
                 </div>
 
-            </footer>
-        </>
+                <div className="footer-sections">
+                    <div className="footer-section">
+                        <h4>Quick Links</h4>
+                        <Link to="/" className="footer-link">Home</Link>
+                        <Link to="/features" className="footer-link">Features</Link>
+                        <Link to="/highlights" className="footer-link">Highlights</Link>
+                        <Link to="/testimonials" className="footer-link">Testimonials</Link>
+                        <Link to="/contact" className="footer-link">Contact</Link>
+                        <Link to="/faq" className="footer-link">FAQ</Link>
+                    </div>
+                </div>
+
+                <div className="footer-sections">
+                    <div className="footer-section">
+                        <h4>Features</h4>
+                        {isAuth ? (
+                            <>
+                                <Link to="/workout-builder" className="footer-link">Workout Builder</Link>
+                                <Link to="/search" className="footer-link">Exercise Finder</Link>
+                            </>
+                        ) : (
+                            <>
+                                <span className="footer-link" style={{color: "rgba(255, 255, 255, 0.5)"}}>Workout Builder (Login required)</span>
+                                <span className="footer-link" style={{color: "rgba(255, 255, 255, 0.5)"}}>Exercise Finder (Login required)</span>
+                            </>
+                        )}
+                    </div>
+                </div>
+
+                <div className="footer-sections">
+                    <div className="footer-section">
+                        <h4>Account</h4>
+                        {isAuth ? (
+                            <>
+                                <Link to="/profile" className="footer-link">My Profile</Link>
+                                <span className="footer-link" onClick={() => useAuth().logout()} style={{cursor: 'pointer'}}>Log Out</span>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/log-in" className="footer-link">Log In</Link>
+                                <Link to="/sign-up" className="footer-link">Sign Up</Link>
+                            </>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </footer>
     );
-};
+}
 
 export default Footer;

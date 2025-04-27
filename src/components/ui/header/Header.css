@@ -47,6 +47,7 @@
     list-style-type: none;
     gap: 1.5rem;
     padding-right: 30px;
+    align-items: center;
 }
 
 .menu a {
@@ -58,3 +59,21 @@
     text-decoration: underline;
 }
 
+.logout-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 0;
+}
+
+.logout-button:hover {
+    text-decoration: underline;
+}
+
+.user-welcome {
+    color: #57f0c2;
+    font-weight: 500;
+}

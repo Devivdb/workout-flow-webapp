@@ -1,30 +1,39 @@
-.signup-background {
-    background: linear-gradient(to right, rgb(253, 146, 242), rgb(108, 125, 255));
-}
-
-.signup-container {
+.profile-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 79vh;
     font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, rgb(108, 125, 255), rgb(99, 247, 195));
 }
 
-.signup-form {
+.profile-form {
     background-color: #22292D;
     padding: 40px;
     border-radius: 10px;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.signup-form h2 {
+.profile-form h2 {
     color: white;
     font-size: 32px;
     margin-bottom: 24px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+}
+
+.profile-info {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    color: white;
+    margin: 5px 0;
 }
 
 .form-group {
@@ -50,11 +59,11 @@
 }
 
 .form-group input:focus {
-    border-color: rgb(253, 146, 242);
+    border-color: rgb(99, 247, 195);
     outline: none;
 }
 
-.signup-button {
+.update-button {
     width: 100%;
     padding: 12px;
     background-color: rgb(99, 247, 195);
@@ -68,11 +77,11 @@
     margin-top: 10px;
 }
 
-.signup-button:hover {
+.update-button:hover {
     background-color: rgba(99, 247, 195, 0.8);
 }
 
-.signup-button:disabled {
+.update-button:disabled {
     background-color: rgba(99, 247, 195, 0.5);
     cursor: not-allowed;
 }
@@ -93,19 +102,4 @@
     border-radius: 5px;
     margin-bottom: 20px;
     font-size: 14px;
-}
-
-.login-link {
-    margin-top: 20px;
-    text-align: center;
-    color: white;
-}
-
-.login-link a {
-    color: rgb(253, 146, 242);
-    text-decoration: none;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
 }
