@@ -19,6 +19,8 @@ function FilteredExercisesList({
         }
     };
 
+    console.log(filteredExercises)
+
     return (
         <section className="filters-block filters-results">
             <h2>Filtered Exercises</h2>
@@ -30,7 +32,7 @@ function FilteredExercisesList({
 
                             return (
                                 <div
-                                    className={`inner ${isSelected ? "clicked" : ""}`}
+                                    className={`inner ${isSelected ? "clicked" : ""} ${expandedExerciseIndex === index ? "with-instructions" : ""}`}
                                     key={index}
                                     onClick={() => onExerciseSelection(exercise)}
                                 >
