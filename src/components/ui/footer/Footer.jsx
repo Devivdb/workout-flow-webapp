@@ -41,8 +41,8 @@ function Footer() {
                             </>
                         ) : (
                             <>
-                                <span className="footer-link" style={{color: "rgba(255, 255, 255, 0.5)"}}>Workout Builder (Login required)</span>
-                                <span className="footer-link" style={{color: "rgba(255, 255, 255, 0.5)"}}>Exercise Finder (Login required)</span>
+                                <span className="footer-link disabled">Workout Builder (Login required)</span>
+                                <span className="footer-link disabled">Exercise Finder (Login required)</span>
                             </>
                         )}
                     </div>
@@ -54,7 +54,7 @@ function Footer() {
                         {isAuth ? (
                             <>
                                 <Link to="/profile" className="footer-link">My Profile</Link>
-                                <span className="footer-link" onClick={() => useAuth().logout()} style={{cursor: 'pointer'}}>Log Out</span>
+                                <span className="footer-link clickable" onClick={() => useAuth().logout()}>Log Out</span>
                             </>
                         ) : (
                             <>

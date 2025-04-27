@@ -1,6 +1,6 @@
-import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import './ProtectedRoute.css';
 
 function ProtectedRoute() {
     const { isAuth, loading } = useAuth();
@@ -23,7 +23,7 @@ function ProtectedRoute() {
                     <circle className="pl__ring" cx="100" cy="100" r="82" fill="none" stroke="url(#pl-grad1)" strokeWidth="36" strokeDasharray="0 257 1 257" strokeDashoffset="0.01" strokeLinecap="round" transform="rotate(-90,100,100)" />
                     <line className="pl__ball" stroke="url(#pl-grad2)" x1="100" y1="18" x2="100.01" y2="182" strokeWidth="36" strokeDasharray="1 165" strokeLinecap="round" />
                 </svg>
-                <p style={{ color: 'white', fontFamily: 'Inter, sans-serif' }}>Loading...</p>
+                <p className="loader-message">Loading...</p>
             </div>
         );
     }
