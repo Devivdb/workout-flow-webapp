@@ -20,7 +20,6 @@
     fill: yellow !important;
 }
 
-/*///////////*/
 
 .result {
     overflow-y: auto;
@@ -28,13 +27,13 @@
 }
 
 
-/*///////////*/
 
 .outer {
     gap: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start; /* Add this to align items at the top */
 }
 
 .inner {
@@ -43,10 +42,24 @@
     border: 2px solid white;
     transition: border-color 0.3s ease-in-out;
     padding: 10px;
+    display: flex; /* Add this */
+    flex-direction: column; /* Add this */
+    height: 100%; /* Add this */
+    align-self: flex-start; /* Add this to prevent stretching */
 }
 
+/* Add this new class for when instructions are visible */
+.inner.with-instructions {
+    height: auto;
+}
 
-/*///////////*/
+/* Make instruction blocks have a fixed height with scrolling */
+.instructions {
+    max-height: 300px; /* Set a maximum height */
+    overflow-y: scroll; /* Add scrolling for overflow */
+    margin-top: 10px;
+}
+
 
 .sel-rem-btn {
     height: 39px;
@@ -62,8 +75,6 @@
 .sel-rem-btn:hover {
     background: rgba(220, 53, 69, 0.5);
 }
-
-/*///////////*/
 
 .selectable-exercise {
     border: 2px solid white;
@@ -85,7 +96,6 @@
     border-color: #6C7DFFFF;
 }
 
-/*///////////*/
 
 .add-sets div{
     display: flex;
@@ -137,14 +147,12 @@
     background: rgba(99, 247, 195, 0.5);
 }
 
-/*/////*/
 
 .add-sets {
     max-height: 350px;
     overflow-y: auto;
 }
 
-/*/////*/
 
 .selectable-exercise {
     max-height: 500px;

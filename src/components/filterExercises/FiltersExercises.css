@@ -56,7 +56,6 @@
 }
 
 
-/*//////*/
 
 .drop-down-menu-wrapper {
     display: flex;
@@ -92,7 +91,6 @@
     transition: background 0.2s ease;
 }
 
-/*//////*/
 
 .apply-rest-btn {
     display: flex;
