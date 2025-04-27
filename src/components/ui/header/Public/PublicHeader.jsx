@@ -1,17 +1,18 @@
-import './Header.css';
+import './PublicHeader.css';
+import '../Header.css'
 import { NavLink } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../../hooks/useAuth.js";
 
-function Header() {
+function PublicHeader() {
     const { isAuth, user, logout } = useAuth();
 
     return (
-        <header className="nav-bar">
-            <nav className="menu">
-                <p className="website-name">
+        <header className="horizontal-nav-bar">
+            <nav className="menu horizontal-menu">
+                <p className="website-name horizontal-website-name">
                     <NavLink to="/">Workout<span>Flow</span></NavLink>
                 </p>
-                <ul className="main-menu">
+                <ul className="main-menu horizontal-main-menu">
                     {isAuth ? (
                         // Show only protected routes for logged-in users
                         <>
@@ -37,7 +38,7 @@ function Header() {
                         </>
                     )}
                 </ul>
-                <ul className="sign-in-log-in">
+                <ul className="horizontal-sign-in-log-in">
                     {isAuth ? (
                         <>
                             <li className="user-welcome">
@@ -63,4 +64,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default PublicHeader;

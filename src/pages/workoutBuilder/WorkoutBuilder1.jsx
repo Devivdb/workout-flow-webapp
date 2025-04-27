@@ -6,7 +6,7 @@ import FiltersExercises from "../../components/filterExercises/FiltersExercises.
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 import { saveAs } from "file-saver";
 import jsPDF from "jspdf";
-import ExerciseSelectionPanel from "../../components/ExerciseSelectionPanel/ExerciseSelectionPanel.jsx";
+import ExerciseSelectionPanel from "../../components/exerciseSelectionPanel/ExerciseSelectionPanel.jsx";
 
 
 function WorkoutBuilder1() {
@@ -120,10 +120,13 @@ function WorkoutBuilder1() {
 
     return (
         <>
-            <div className="export-buttons">
-                <button onClick={exportAsJSON}>Export JSON</button>
-                <button onClick={exportAsCSV}>Export CSV</button>
-                <button onClick={exportAsPDF}>Export PDF</button>
+            <div className="workout-builder-toolbar">
+                <h1>Workout builder</h1>
+                <div className="export-buttons">
+                    <button onClick={exportAsJSON}>Export JSON</button>
+                    <button onClick={exportAsCSV}>Export CSV</button>
+                    <button onClick={exportAsPDF}>Export PDF</button>
+                </div>
             </div>
             <div className="workout-builder-container">
                 <FiltersExercises/>

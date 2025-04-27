@@ -1,11 +1,15 @@
 import './Search.css'
 import FiltersExercises from "../../components/filterExercises/FiltersExercises.jsx";
-import FilteredExercisesList from "../../components/ExerciseSelectionPanel/FilteredExercisesList.jsx";
+import FilteredExercisesList from "../../components/exerciseSelectionPanel/FilteredExercisesList.jsx";
 import { useContext, useEffect, useCallback } from "react";
 import { FiltersContext } from "../../context/filtersContext/FiltersContext.jsx";
 import fetchExercisesByEquipment from "../../services/api/fetchExercises.js";
+import useBackground from "../../hooks/useBackground.js";
 
 function Search() {
+
+    useBackground("highlights-background");
+
     /// Context
     const {
         selectedPrimaryMuscles,
@@ -57,6 +61,7 @@ function Search() {
 
     return (
         <>
+            <h1>Excercise finder</h1>
             <div className="outer-container-search">
                 <FiltersExercises
                     className="filters-results"/>
