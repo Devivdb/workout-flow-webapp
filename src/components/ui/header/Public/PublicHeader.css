@@ -77,3 +77,10 @@
     color: #57f0c2;
     font-weight: 500;
 }
+
+.horizontal-sign-in-log-in {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;
+}

@@ -25,13 +25,6 @@
     color: white;
 }
 
-/* Remove this rule that's causing the underline on hover */
-/*
-.main-menu a:hover, .sign-in-log-in a:hover {
-    text-decoration: underline;
-}
-*/
-
 /* Keep underline for horizontal nav only */
 .horizontal-main-menu a:hover,
 .horizontal-sign-in-log-in a:hover {
