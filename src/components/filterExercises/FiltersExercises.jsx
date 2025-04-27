@@ -50,7 +50,7 @@ function FiltersExercises() {
     return (
         <>
             <section className="filters-block filter-apply">
-                <h2>Filters</h2>
+                <h2>Select a muscle group:</h2>
                 <div className="svg-container" onClick={handleMuscleClick}>
                     <MuscleGroups className="muscle-svg"/>
                 </div>

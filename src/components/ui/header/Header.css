@@ -1,53 +1,23 @@
-.nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(80, 113, 250, 0.1);
-    min-height: 10vh;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
+/* Shared header styles */
 .website-name a {
     font-family: 'montserrat', sans-serif;
     font-weight: bold;
-    font-size: 2rem;
-    text-align: left;
     color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
     text-decoration: none;
 }
 
 .website-name span {
     color: #57f0c2;
-    text-decoration: none;
 }
 
 .menu {
     font-family: 'Inter', sans-serif;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
     width: 100%;
 }
 
 .main-menu {
-    display: flex;
-    flex-direction: row;
     list-style-type: none;
-    padding: 0;
-    gap: 2rem;
-}
-
-.menu .sign-in-log-in{
-    display: flex;
-    list-style-type: none;
-    gap: 1.5rem;
-    padding-right: 30px;
-    align-items: center;
 }
 
 .menu a {
@@ -55,25 +25,42 @@
     color: white;
 }
 
+/* Remove this rule that's causing the underline on hover */
+/*
 .main-menu a:hover, .sign-in-log-in a:hover {
+    text-decoration: underline;
+}
+*/
+
+/* Keep underline for horizontal nav only */
+.horizontal-main-menu a:hover,
+.horizontal-sign-in-log-in a:hover {
     text-decoration: underline;
 }
 
 .logout-button {
-    background: none;
-    border: none;
-    color: white;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+}
+
+/* Better accessibility focus styles - only show outline for keyboard navigation */
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid #57f0c2;
+    outline-offset: 2px;
+}
+
+/* For screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     padding: 0;
-}
-
-.logout-button:hover {
-    text-decoration: underline;
-}
-
-.user-welcome {
-    color: #57f0c2;
-    font-weight: 500;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
