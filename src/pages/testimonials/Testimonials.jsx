@@ -11,7 +11,7 @@ function Testimonials(){
         <>
             <div className="intro-text-testimonials">
                 <h1>What users are saying</h1>
-                <p>Still not convinced? See what our users love about Pumpd:</p>
+                <p>Still not convinced? See what our users love about WorkoutFlow:</p>
             </div>
             <ReviewBlock></ReviewBlock>
         </>
