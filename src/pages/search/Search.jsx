@@ -7,14 +7,9 @@ import fetchExercisesByEquipment from "../../services/api/fetchExercises.js";
 import useBackground from "../../hooks/useBackground.js";
 
 function Search() {
-
-    //TODO make "Excercise finder" same font as the rest of the h1
-    //TODO make sure "Filtered Exercises" is the same height as the top of the filter selector
-    //TODO make sure that all exercise block are the same height as each other (maybe with min height)
-
     useBackground("highlights-background");
 
-    /// Context
+
     const {
         selectedPrimaryMuscles,
         activeFilters,
@@ -25,7 +20,6 @@ function Search() {
         handleExerciseSelection
     } = useContext(FiltersContext);
 
-    // Memoize the filtering function
     const filterExercises = useCallback(() => {
         if (activeFilters.exercises && activeFilters.exercises.length > 0) {
             const filtered = activeFilters.exercises.filter(exercise =>
@@ -36,29 +30,23 @@ function Search() {
             );
             setFilteredExercises(filtered);
         } else {
-            // Clear filtered exercises when there are no exercises in activeFilters
-            // This handles the reset filters case
             setFilteredExercises([]);
         }
     }, [activeFilters, setFilteredExercises]);
 
-    // API fetch when the selected muscles change or when filters are reset
     useEffect(() => {
         async function fetchData() {
             if (selectedPrimaryMuscles) {
                 const data = await fetchExercisesByEquipment(selectedPrimaryMuscles);
                 setExercises(data);
             } else {
-                // When primary muscles selection is reset, clear exercises
                 setExercises([]);
             }
         }
 
         fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedPrimaryMuscles]); // removed setExercises from dependencies
+    }, [selectedPrimaryMuscles]);
 
-    // Apply filtering when activeFilters changes
     useEffect(() => {
         filterExercises();
     }, [filterExercises]);

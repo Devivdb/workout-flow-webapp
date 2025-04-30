@@ -11,19 +11,16 @@ export function AuthProvider({ children }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Check if user is already logged in (token exists)
         const checkAuthStatus = async () => {
             try {
                 const token = localStorage.getItem("token");
                 if (token) {
-                    // Verify token by getting user data
                     const userData = await authService.getCurrentUser();
                     setUser(userData);
                     setIsAuth(true);
                 }
             } catch (error) {
                 console.error("Authentication token invalid:", error);
-                // Clear invalid token
                 localStorage.removeItem("token");
                 setIsAuth(false);
                 setUser(null);

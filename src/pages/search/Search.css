@@ -5,7 +5,6 @@
     gap: 20px;
 }
 
-/* Main section styles */
 .page-search.filters-block.filters-results {
     padding: 2rem;
     display: flex;
@@ -25,7 +24,6 @@
     padding-bottom: 0.5rem;
 }
 
-/* Add a fancy gradient underline */
 .page-search.filters-block.filters-results h2::after {
     content: '';
     position: absolute;
@@ -41,7 +39,6 @@
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Outer container */
 .outer {
     display: flex;
     flex-direction: row;
@@ -49,7 +46,6 @@
     margin-top: 2rem;
 }
 
-/* Exercise Card */
 .inner {
     background: linear-gradient(to bottom right, #1e293b, #334155);
     border-radius: 1rem;
@@ -62,25 +58,21 @@
     min-height: 360px;
 }
 
-/* Hover effect */
 .inner:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Selected exercise */
 .inner.clicked {
     border: 2px solid #6ee7b7;
 }
 
-/* Title */
 .inner h3 {
     font-size: 1.6rem;
     margin-bottom: 1rem;
     color: #f1f5f9;
 }
 
-/* Exercise details */
 .inner p {
     margin-bottom: 0.5rem;
     font-size: 1rem;
@@ -92,7 +84,6 @@
     margin-right: 0.5rem;
 }
 
-/* Instructions button */
 .instructions-toggle {
     background-image: linear-gradient(to right, rgb(253, 146, 242), rgb(81, 114, 248));
     color: black;
@@ -110,7 +101,6 @@
     box-shadow: 0 8px 15px rgba(0,0,0,0.15);
 }
 
-/* Instructions block */
 .instructions {
     margin-top: 1rem;
     background: #475569;
@@ -134,7 +124,6 @@
     line-height: 1.5;
 }
 
-/* Animation */
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(10px); }
     100% { opacity: 1; transform: translateY(0); }

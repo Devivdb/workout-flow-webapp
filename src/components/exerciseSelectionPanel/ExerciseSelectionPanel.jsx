@@ -5,9 +5,8 @@ import SelectedExercisesList from './SelectedExercisesList.jsx';
 import ExerciseDetailPanel from './ExerciseDetailPanel.jsx';
 import {FiltersContext} from "../../context/filtersContext/FiltersContext.jsx";
 
-function ExerciseSelectionPanel() {
+function ExerciseSelectionPanel({pageId = "page2"}) {
 
-    /// Context
     const {
         activeFilters,
         filteredExercises,
@@ -23,7 +22,6 @@ function ExerciseSelectionPanel() {
         handleDeleteSet
     } = useContext(FiltersContext);
 
-    /// Hook
     useEffect(() => {
         const filtered = activeFilters.exercises.filter(exercise =>
             (activeFilters.selectedLevel === "all" || exercise.level === activeFilters.selectedLevel) &&
@@ -56,6 +54,7 @@ function ExerciseSelectionPanel() {
     return (
         <>
             <FilteredExercisesList
+                pageId={pageId}
                 filteredExercises={filteredExercises}
                 selectedExercises={selectedExercises}
                 onExerciseSelection={handleExerciseSelection}

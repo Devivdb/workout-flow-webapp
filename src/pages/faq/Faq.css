@@ -28,7 +28,7 @@
 }
 
 .question.expanded {
-    padding-bottom: 20px; /* Adds extra space for the answer */
+    padding-bottom: 20px;
 }
 
 .question-header {
@@ -55,5 +55,5 @@
 }
 
 .arrow-active {
-    transform: rotate(180deg); /* Rotates the arrow when expanded */
+    transform: rotate(180deg);
 }

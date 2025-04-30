@@ -22,19 +22,16 @@ function AppContent() {
     const { isAuth } = useAuth();
     const location = useLocation();
 
-    // Define protected route patterns
     const protectedRoutePatterns = [
         '/workout-builder',
         '/search',
         '/profile'
     ];
 
-    // Check if the current path starts with any protected route pattern
     const isProtectedRoute = protectedRoutePatterns.some(pattern =>
         location.pathname === pattern || location.pathname.startsWith(`${pattern}/`)
     );
 
-    // Determine layout based on authentication and route
     const useProtectedLayout = isAuth && isProtectedRoute;
 
     return (
@@ -43,7 +40,6 @@ function AppContent() {
 
             <main className={useProtectedLayout ? 'content-with-sidebar' : 'content-standard'}>
                 <Routes>
-                    {/* Public routes */}
                     <Route path="/" element={<Home/>}/>
                     <Route path="/features" element={<Features/>}/>
                     <Route path="/testimonials" element={<Testimonials/>}/>
@@ -52,8 +48,6 @@ function AppContent() {
                     <Route path="/faq" element={<Faq/>}/>
                     <Route path="/log-in" element={<LogIn/>}/>
                     <Route path="/sign-up" element={<SignUp/>}/>
-
-                    {/* Protected routes */}
                     <Route element={<ProtectedRoute />}>
                         <Route path="/workout-builder/*" element={<WorkoutBuilder1/>}/>
                         <Route path="/search/*" element={<Search/>}/>

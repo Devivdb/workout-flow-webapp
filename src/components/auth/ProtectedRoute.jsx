@@ -5,7 +5,6 @@ import './ProtectedRoute.css';
 function ProtectedRoute() {
     const { isAuth, loading } = useAuth();
 
-    // Show loading state while checking authentication
     if (loading) {
         return (
             <div className="loader-container">
@@ -28,12 +27,10 @@ function ProtectedRoute() {
         );
     }
 
-    // Redirect to login if not authenticated
     if (!isAuth) {
         return <Navigate to="/log-in" replace />;
     }
 
-    // Render the protected route if authenticated
     return <Outlet />;
 }
 

@@ -11,12 +11,8 @@ import ExerciseSelectionPanel from "../../components/exerciseSelectionPanel/Exer
 
 function WorkoutBuilder1() {
 
-    //TODO Implement a new navbar on the right side with icons.
-
-    ///////////////////// Background
     useBackground("workout-builder-background");
 
-    /// Context
     const {
         selectedPrimaryMuscles,
         setExercises,
@@ -24,7 +20,6 @@ function WorkoutBuilder1() {
         setsData
     } = useContext(FiltersContext)
 
-    ///////////////////// API fetch
     useEffect(() => {
         async function fetchData() {
             const data = await fetchExercisesByEquipment(selectedPrimaryMuscles);
@@ -35,9 +30,7 @@ function WorkoutBuilder1() {
     }, [selectedPrimaryMuscles]);
 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Function to format data for export
     const formatWorkoutData = () => {
         return selectedExercises.map((exercise) => ({
             name: exercise.name,
@@ -52,14 +45,12 @@ function WorkoutBuilder1() {
         }))
     }
 
-    // Export as JSON
     const exportAsJSON = () => {
         const data = formatWorkoutData();
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
         saveAs(blob, "workout.json");
     };
 
-    // Export as CSV
     const exportAsCSV = () => {
         const data = formatWorkoutData();
         const csvContent =
@@ -130,7 +121,7 @@ function WorkoutBuilder1() {
             </div>
             <div className="workout-builder-container">
                 <FiltersExercises/>
-                <ExerciseSelectionPanel/>
+                <ExerciseSelectionPanel pageId="page2"/>
             </div>
         </>
     );

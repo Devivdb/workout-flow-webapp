@@ -135,8 +135,6 @@ export function FiltersProvider({ children }) {
             value={{
                 ...pendingFilters,
                 activeFilters,
-
-                // Setters for pending filters
                 setSelectedPrimaryMuscles,
                 setSelectedSecondaryMuscles,
                 setSelectedLevel,
@@ -144,21 +142,17 @@ export function FiltersProvider({ children }) {
                 setSelectedForce,
                 setSelectedMechanic,
                 setExercises,
-
-                // Actions
                 applyFilters,
                 resetFilters,
 
                 hasChanges: JSON.stringify(pendingFilters) !== JSON.stringify(activeFilters),
 
-                // Exercise selection state
                 filteredExercises,
                 setFilteredExercises,
                 selectedExercises,
                 activeExercise,
                 setsData,
 
-                // Exercise selection handlers
                 handleExerciseSelection,
                 handleDeleteExercise,
                 handleSelectedExerciseClick,
@@ -166,7 +160,6 @@ export function FiltersProvider({ children }) {
                 handleInputChange,
                 handleDeleteSet,
 
-                // Page id
                 shouldShowInstructions
             }}
         >

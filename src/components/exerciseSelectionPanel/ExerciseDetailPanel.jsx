@@ -1,4 +1,3 @@
-import React from 'react';
 import MuscleGroupVisualizer from './MuscleGroupVisualizer.jsx';
 import ExerciseSetsManager from './ExerciseSetsManager.jsx';
 
@@ -8,10 +7,13 @@ function ExerciseDetailPanel({
                                  setsData,
                                  onAddSet,
                                  onInputChange,
-                                 onDeleteSet
+                                 onDeleteSet,
+                                 pageId = "page2"
                              }) {
+    const pageClass = pageId === "page1" ? "page-search" : "page-workout-builder";
+
     return (
-        <section className="filters-block">
+        <section className={`filters-block ${pageClass}`}>
             <div className="sets-section">
                 <MuscleGroupVisualizer
                     activeExercise={activeExercise}
