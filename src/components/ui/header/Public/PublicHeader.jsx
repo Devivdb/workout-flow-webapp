@@ -14,7 +14,6 @@ function PublicHeader() {
                 </p>
                 <ul className="main-menu horizontal-main-menu">
                     {isAuth ? (
-                        // Show only protected routes for logged-in users
                         <>
                             <li>
                                 <NavLink to="/workout-builder">Workout builder</NavLink>
@@ -24,7 +23,6 @@ function PublicHeader() {
                             </li>
                         </>
                     ) : (
-                        // Show public navigation for non-logged-in users
                         <>
                             <li>
                                 <NavLink to="/features">Features</NavLink>

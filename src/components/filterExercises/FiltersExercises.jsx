@@ -16,19 +16,15 @@ function FiltersExercises() {
         setSelectedForce,
         selectedMechanic,
         setSelectedMechanic,
-
-        // Actions
         applyFilters,
         resetFilters,
         hasChanges
     } = useContext(FiltersContext);
 
-    /// Variables
     const equipmentTypes = ["barbell", "dumbbell", "cable", "machine", "kettlebells", "bands", "medicine_ball", "exercise_ball", "body_only", "foam_roll", "other"];
     const forceTypes = ["all", "push", "pull", "static"];
     const mechanicTypes = ["all", "compound", "isolation"];
 
-    /// Hooks
     useEffect(() => {
         document.querySelectorAll(".muscle-svg path").forEach((el) => {
             el.classList.remove("selected");

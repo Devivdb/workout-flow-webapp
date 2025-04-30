@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import MuscleGroups from "../../assets/svg/MuscleGroups.svg?react";
 
 function MuscleGroupVisualizer({ activeExercise, selectedExercises }) {

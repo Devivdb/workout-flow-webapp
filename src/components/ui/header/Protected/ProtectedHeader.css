@@ -1,11 +1,9 @@
-/* Import shared styles */
 @import '../Header.css';
 
-/* Protected Header specific styles */
 .vertical-nav-bar {
     display: flex;
     min-height: 100vh;
-    width: 70px; /* Start with collapsed width */
+    width: 70px;
     box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     left: 0;
@@ -16,7 +14,6 @@
     z-index: 1000;
 }
 
-/* Expanded state */
 .vertical-nav-bar.expanded {
     width: 250px;
 }
@@ -29,7 +26,6 @@
     height: 100%;
 }
 
-/* Header top section */
 .header-top {
     display: flex;
     align-items: center;
@@ -39,7 +35,6 @@
     padding: 0 15px;
 }
 
-/* Different layout for collapsed state */
 .vertical-nav-bar:not(.expanded) .header-top {
     flex-direction: column;
     gap: 15px;
@@ -86,7 +81,6 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* FIXED MENU ITEM STYLING */
 .vertical-main-menu {
     display: flex;
     flex-direction: column;
@@ -118,7 +112,6 @@
     justify-content: flex-start;
 }
 
-/* REMOVE UNDERLINE ON HOVER */
 .vertical-main-menu li a:hover,
 .vertical-sign-in-log-in a:hover,
 .vertical-website-name a:hover {
@@ -143,7 +136,7 @@
 
 .vertical-main-menu li a.active {
     background-color: rgba(99, 247, 195, 0.3);
-    width: 100%; /* Ensure highlight covers full width */
+    width: 100%;
 }
 
 .vertical-nav-bar:not(.expanded) .vertical-main-menu li a.active {
@@ -161,7 +154,7 @@
 .nav-label {
     flex-grow: 1;
     white-space: nowrap;
-    overflow: visible; /* Prevent text cutoff */
+    overflow: visible;
 }
 
 .vertical-sign-in-log-in {

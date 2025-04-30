@@ -16,7 +16,6 @@ function Profile() {
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Load user data when component mounts
     useEffect(() => {
         if (user) {
             setFormData(prevState => ({
@@ -33,34 +32,28 @@ function Profile() {
             [name]: value
         }));
 
-        // Clear messages when user types
         if (error) setError('');
         if (success) setSuccess('');
     };
 
     const validateForm = () => {
-        // Check if changing password
         if (formData.password) {
-            // Password should be at least 6 chars
             if (formData.password.length < 6) {
                 setError('Password must be at least 6 characters long');
                 return false;
             }
 
-            // Passwords should match
             if (formData.password !== formData.repeatedPassword) {
                 setError('Passwords do not match');
                 return false;
             }
 
-            // Should provide current password for verification
             if (!formData.currentPassword) {
                 setError('Please enter your current password to confirm changes');
                 return false;
             }
         }
 
-        // If changing email, validate format
         if (formData.email !== user.email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(formData.email)) {
@@ -75,7 +68,6 @@ function Profile() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Only proceed if there are changes
         const hasEmailChange = formData.email !== user.email;
         const hasPasswordChange = formData.password.length > 0;
 
@@ -91,7 +83,6 @@ function Profile() {
         setIsSubmitting(true);
 
         try {
-            // Create update object with only the changed fields
             const updateData = {};
 
             if (hasEmailChange) {
@@ -103,11 +94,10 @@ function Profile() {
                 updateData.repeatedPassword = formData.repeatedPassword;
             }
 
-            // Call API to update user
+
             await authService.updateUser(updateData);
             setSuccess('Profile updated successfully!');
 
-            // Clear password fields after successful update
             setFormData(prev => ({
                 ...prev,
                 password: '',

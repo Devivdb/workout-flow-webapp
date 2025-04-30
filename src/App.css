@@ -15,7 +15,6 @@ button {
     font-family: 'Inter', sans-serif;
 }
 
-/* Layout classes for different header types */
 .app-standard {
     display: flex;
     flex-direction: column;
@@ -33,19 +32,17 @@ button {
 }
 
 .content-with-sidebar {
-    margin-left: 70px; /* Default to collapsed sidebar width */
+    margin-left: 70px;
     width: calc(100% - 70px);
     min-height: 100vh;
     transition: margin-left 0.3s ease, width 0.3s ease;
 }
 
-/* Adjust content margin when sidebar is expanded */
 .vertical-nav-bar.expanded ~ .content-with-sidebar {
     margin-left: 250px;
     width: calc(100% - 250px);
 }
 
-/* Media queries for responsive behavior */
 @media (max-width: 768px) {
     .app-with-sidebar {
         flex-direction: column;

@@ -19,11 +19,11 @@ function FilteredExercisesList({
         }
     };
 
-    console.log(filteredExercises)
+    const pageClass = pageId === "page1" ? "page-search" : "page-workout-builder";
 
     return (
-        <section className="filters-block filters-results">
-            <h2>Filtered Exercises</h2>
+        <section className={`filters-block filters-results ${pageClass}`} >
+            <h2>Filtered Exercise results:</h2>
             <div className="result">
                 {filteredExercises.length > 0 ? (
                     <div className="outer">

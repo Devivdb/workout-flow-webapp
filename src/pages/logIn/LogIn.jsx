@@ -23,7 +23,6 @@ function LogIn() {
             [name]: value
         }));
 
-        // Clear error when user types
         if (error) setError('');
     };
 

@@ -1,4 +1,3 @@
-/* Shared header styles */
 .website-name a {
     font-family: 'montserrat', sans-serif;
     font-weight: bold;
@@ -25,7 +24,6 @@
     color: white;
 }
 
-/* Keep underline for horizontal nav only */
 .horizontal-main-menu a:hover,
 .horizontal-sign-in-log-in a:hover {
     text-decoration: underline;
@@ -36,7 +34,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* Better accessibility focus styles - only show outline for keyboard navigation */
 *:focus {
     outline: none;
 }
@@ -46,7 +43,6 @@
     outline-offset: 2px;
 }
 
-/* For screen readers */
 .sr-only {
     position: absolute;
     width: 1px;

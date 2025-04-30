@@ -2,7 +2,113 @@
     background-image: linear-gradient(to right, rgb(253, 146, 242), rgb(81, 114, 248));
 }
 
-.filters-block {
+.page-workout-builder.filters-block {
+    display: flex;
+    flex-direction: column;
+    background-color: #1e293b;
+    border-radius: 1rem;
+    width: 30%;
+    max-height: 945px;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.filters-block h2{
+    font-family: 'montserrat', sans-serif;
+}
+
+.workout-builder-container {
+    color: white;
+    padding: 0px 20px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.extra {
+    color: #1f2937;
+}
+
+.pl {
+    display: block;
+    width: 6.25em;
+    height: 6.25em;
+}
+.pl__ring, .pl__ball {
+    animation: ring 2s ease-out infinite;
+}
+.pl__ball {
+    animation-name: ball;
+}
+
+.export-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 20px;
+    padding-right: 4%;
+}
+
+.export-buttons button {
+    border-radius: 50px;
+    width: 110px;
+    height: 39px;
+    cursor: pointer;
+    background-color: #63F7C3FF;
+}
+
+.export-buttons button:hover {
+    background: rgba(99, 247, 195, 0.5);
+}
+
+.workout-builder-toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+
+.workout-builder-toolbar h1 {
+    font-family: 'montserrat', sans-serif;
+    color: white;
+}
+
+
+
+@keyframes ring {
+    from {
+        stroke-dasharray: 0 257 0 0 1 0 0 258;
+    }
+    25% {
+        stroke-dasharray: 0 0 0 0 257 0 258 0;
+    }
+    50%, to {
+        stroke-dasharray: 0 0 0 0 0 515 0 0;
+    }
+}
+@keyframes ball {
+    from, 50% {
+        animation-timing-function: ease-in;
+        stroke-dashoffset: 1;
+    }
+    64% {
+        animation-timing-function: ease-in;
+        stroke-dashoffset: -109;
+    }
+    78% {
+        animation-timing-function: ease-in;
+        stroke-dashoffset: -145;
+    }
+    92% {
+        animation-timing-function: ease-in;
+        stroke-dashoffset: -157;
+    }
+    57%, 71%, 85%, 99%, to {
+        animation-timing-function: ease-out;
+        stroke-dashoffset: -163;
+    }
+} lock {
     display: flex;
     flex-direction: column;
     background-color: #22292D;

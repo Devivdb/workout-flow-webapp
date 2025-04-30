@@ -4,10 +4,13 @@ function SelectedExercisesList({
                                    selectedExercises,
                                    activeExercise,
                                    onExerciseClick,
-                                   onDeleteExercise
+                                   onDeleteExercise,
+                                   pageId = "page2"
                                }) {
+    const pageClass = pageId === "page1" ? "page-search" : "page-workout-builder";
+
     return (
-        <section className="filters-block">
+        <section className={`filters-block ${pageClass}`}>
             <h2>Selected Exercises</h2>
             <div className="result">
                 {selectedExercises.length > 0 ? (

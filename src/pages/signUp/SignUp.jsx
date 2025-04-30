@@ -27,38 +27,32 @@ function SignUp() {
             [name]: value
         }));
 
-        // Clear error when user types
         if (error) setError('');
     };
 
     const validateForm = () => {
-        // Check if fields are empty
         if (!formData.username.trim() || !formData.email.trim() ||
             !formData.password.trim() || !formData.confirmPassword.trim()) {
             setError('Please fill in all fields');
             return false;
         }
 
-        // Check if username is at least 6 characters
         if (formData.username.length < 6) {
             setError('Username must be at least 6 characters long');
             return false;
         }
 
-        // Validate email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             setError('Please enter a valid email address');
             return false;
         }
 
-        // Check if password is at least 6 characters
         if (formData.password.length < 6) {
             setError('Password must be at least 6 characters long');
             return false;
         }
 
-        // Check if passwords match
         if (formData.password !== formData.confirmPassword) {
             setError('Passwords do not match');
             return false;
@@ -70,7 +64,6 @@ function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validate form inputs
         if (!validateForm()) {
             return;
         }
@@ -86,7 +79,6 @@ function SignUp() {
 
             if (result.success) {
                 setSuccess('Registration successful! Redirecting to login...');
-                // Redirect to login page after 2 seconds
                 setTimeout(() => {
                     navigate('/log-in');
                 }, 2000);
