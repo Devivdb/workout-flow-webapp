@@ -8,6 +8,10 @@ import useBackground from "../../hooks/useBackground.js";
 
 function Search() {
 
+    //TODO make "Excercise finder" same font as the rest of the h1
+    //TODO make sure "Filtered Exercises" is the same height as the top of the filter selector
+    //TODO make sure that all exercise block are the same height as each other (maybe with min height)
+
     useBackground("highlights-background");
 
     /// Context
@@ -61,7 +65,6 @@ function Search() {
 
     return (
         <>
-            <h1>Excercise finder</h1>
             <div className="outer-container-search">
                 <FiltersExercises
                     className="filters-results"/>
