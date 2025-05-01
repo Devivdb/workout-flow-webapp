@@ -1,16 +1,19 @@
 import './Features.css'
 import useBackground from "../../../../workout-flow-webapp/src/hooks/useBackground.js";
 import {useState} from "react";
+import exerciseFinder from "/src/assets/pictures/exerciseFinder.png"
+import Workoutbuilder from "/src/assets/pictures/Workoutbuilder.png"
 
 function Features() {
 
     useBackground("features-background")
-    const [selectedImage, setSelectedImage] = useState(featureOne)
+    const [selectedImage, setSelectedImage] = useState(exerciseFinder)
 
     useBackground("features-background")
 
     const images = {
-
+        feature1: exerciseFinder,
+        feature2: Workoutbuilder
     }
 
     const handleClick = (feature) => {
