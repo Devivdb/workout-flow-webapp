@@ -13,7 +13,7 @@ function Home() {
     }
 
     return (
-        <>
+        <div className="home-background">
             <div className="intro-home-page">
                 <h1 className="intro-text-home-page">WORKOUT BUILDER</h1>
                 <p className="intro-text">
@@ -21,8 +21,8 @@ function Home() {
                 </p>
                 <button type="button" className="generate-button" onClick={handleButtonClick}>GENERATE YOUR WORKOUT</button>
             </div>
-        </>
-    );
+        </div>
+    )
 }
 
 export default Home;

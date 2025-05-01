@@ -2,7 +2,7 @@
  * GLOBAL STYLES
  */
 .home-background {
-    background: rgb(34, 41, 45);
+    background: linear-gradient(to bottom, #1f252a, #2a2e35);
 }
 
 /*
