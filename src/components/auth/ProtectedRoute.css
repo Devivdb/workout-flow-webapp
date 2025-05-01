@@ -1,3 +1,6 @@
+/*
+ * LAYOUT COMPONENTS
+ */
 .loader-container {
     display: flex;
     flex-direction: column;
@@ -6,6 +9,9 @@
     height: 100vh;
 }
 
+/*
+ * TYPOGRAPHY
+ */
 .loader-message {
     color: white;
     font-family: 'Inter', sans-serif;

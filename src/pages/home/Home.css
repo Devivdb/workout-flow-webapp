@@ -1,7 +1,13 @@
+/*
+ * GLOBAL STYLES
+ */
 .home-background {
     background: rgb(34, 41, 45);
 }
 
+/*
+ * LAYOUT
+ */
 .intro-home-page {
     display: flex;
     flex-direction: column;
@@ -10,22 +16,7 @@
     height: 100vh;
 }
 
-.intro-text-home-page {
-    font-family: montserrat, sans-serif;
-    font-size: 50px;
-    background: linear-gradient(to right, rgb(253, 146, 242), rgb(167, 130, 245), rgb(81, 114, 248) 90%);
-    background-size: 650px;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 .intro-text {
-    font-family: montserrat, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    background: linear-gradient(to right, rgb(81, 114, 248), rgb(253, 146, 242));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     max-width: 570px;
     text-align: center;
     padding-top: 30px;
@@ -33,14 +24,59 @@
 }
 
 .generate-button {
-    font-weight: bold;
-    font-size: 20px;
-    background-color: rgb(99, 247, 195);
-    border-radius: 50px;
     width: 300px;
     height: 75px;
 }
 
+/*
+ * TYPOGRAPHY
+ */
+.intro-text-home-page {
+    font-family: montserrat, sans-serif;
+    font-size: 50px;
+}
+
+.intro-text {
+    font-family: montserrat, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.generate-button {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/*
+ * COLORS
+ */
+.intro-text-home-page {
+    background: linear-gradient(to right, rgb(253, 146, 242), rgb(167, 130, 245), rgb(81, 114, 248) 90%);
+    background-size: 650px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.intro-text {
+    background: linear-gradient(to right, rgb(81, 114, 248), rgb(253, 146, 242));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.generate-button {
+    background-color: rgb(99, 247, 195);
+}
+
+/*
+ * BORDERS & SHAPES
+ */
+.generate-button {
+    border-radius: 50px;
+}
+
+/*
+ * ANIMATIONS
+ */
 .generate-button:hover {
     background-color: rgb(81, 114, 248);
 }

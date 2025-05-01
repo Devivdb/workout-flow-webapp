@@ -1,3 +1,6 @@
+/*
+ * BACKGROUNDS & CONTAINERS
+ */
 .faq-background {
     background-image: linear-gradient(to right, rgb(253, 146, 242), rgb(81, 114, 248));
 }
@@ -10,11 +13,24 @@
     min-height: 79vh;
 }
 
+/*
+ * TYPOGRAPHY
+ */
 .outer-container-wrapper-faq h1 {
     font-family: Montserrat, sans-serif;
     padding-top: 20px;
 }
 
+.answer {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #d1d5db;
+}
+
+/*
+ * COMPONENT: FAQ QUESTION
+ */
 .question {
     background-color: #1f2937;
     width: 600px;
@@ -31,23 +47,19 @@
     padding-bottom: 20px;
 }
 
+.question:hover {
+    background-color: #334155;
+}
+
 .question-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.question:hover {
-    background-color: #334155;
-}
-
-.answer {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #d1d5db;
-}
-
+/*
+ * INTERACTIVE ELEMENTS
+ */
 .arrow {
     transition: transform 0.3s ease;
     color: white;

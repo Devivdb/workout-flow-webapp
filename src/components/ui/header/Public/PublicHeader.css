@@ -1,3 +1,6 @@
+/*
+ * LAYOUT: NAVIGATION CONTAINER
+ */
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -8,6 +11,19 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.menu {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+/*
+ * COMPONENT: BRAND/LOGO
+ */
 .website-name a {
     font-family: 'montserrat', sans-serif;
     font-weight: bold;
@@ -24,30 +40,15 @@
     text-decoration: none;
 }
 
-.menu {
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;
-}
-
+/*
+ * COMPONENT: MAIN MENU
+ */
 .main-menu {
     display: flex;
     flex-direction: row;
     list-style-type: none;
     padding: 0;
     gap: 2rem;
-}
-
-.menu .sign-in-log-in{
-    display: flex;
-    list-style-type: none;
-    gap: 1.5rem;
-    padding-right: 30px;
-    align-items: center;
 }
 
 .menu a {
@@ -57,6 +58,29 @@
 
 .main-menu a:hover, .sign-in-log-in a:hover {
     text-decoration: underline;
+}
+
+/*
+ * COMPONENT: USER AUTHENTICATION
+ */
+.menu .sign-in-log-in {
+    display: flex;
+    list-style-type: none;
+    gap: 1.5rem;
+    padding-right: 30px;
+    align-items: center;
+}
+
+.horizontal-sign-in-log-in {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.user-welcome {
+    color: #57f0c2;
+    font-weight: 500;
 }
 
 .logout-button {
@@ -71,16 +95,4 @@
 
 .logout-button:hover {
     text-decoration: underline;
-}
-
-.user-welcome {
-    color: #57f0c2;
-    font-weight: 500;
-}
-
-.horizontal-sign-in-log-in {
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
-    padding-right: 20px;
 }

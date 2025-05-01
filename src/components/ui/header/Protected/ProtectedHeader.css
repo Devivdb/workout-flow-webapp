@@ -1,5 +1,11 @@
+/*
+ * IMPORTS
+ */
 @import '../Header.css';
 
+/*
+ * LAYOUT: NAVIGATION CONTAINER
+ */
 .vertical-nav-bar {
     display: flex;
     min-height: 100vh;
@@ -21,11 +27,14 @@
 .vertical-menu {
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px 0; /* Remove horizontal padding */
+    padding: 20px 0;
     width: 100%;
     height: 100%;
 }
 
+/*
+ * COMPONENT: HEADER TOP
+ */
 .header-top {
     display: flex;
     align-items: center;
@@ -81,6 +90,9 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
+/*
+ * COMPONENT: MAIN MENU
+ */
 .vertical-main-menu {
     display: flex;
     flex-direction: column;
@@ -143,6 +155,9 @@
     width: 40px;
 }
 
+/*
+ * COMPONENT: MENU ITEMS
+ */
 .nav-icon {
     font-size: 1.2rem;
     min-width: 24px;
@@ -157,6 +172,9 @@
     overflow: visible;
 }
 
+/*
+ * COMPONENT: USER AUTHENTICATION
+ */
 .vertical-sign-in-log-in {
     display: flex;
     flex-direction: column;

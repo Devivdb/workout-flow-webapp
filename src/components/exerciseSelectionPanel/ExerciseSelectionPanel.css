@@ -1,31 +1,6 @@
-.inner.clicked {
-    border-color: #6C7DFFFF;
-}
-
-.muscle-svg-target {
-    min-height: 100%;
-    min-width: 100%;
-}
-
-.muscle-svg-target path {
-    fill: gray;
-    transition: fill 0.3s ease-in-out;
-}
-
-.highlight-primary {
-    fill: red !important;
-}
-
-.highlight-secondary {
-    fill: yellow !important;
-}
-
-
-.result {
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
+/*
+ * LAYOUT CONTAINERS
+ */
 .outer {
     gap: 20px;
     display: flex;
@@ -50,28 +25,39 @@
     height: auto;
 }
 
+.inner.clicked {
+    border-color: #6C7DFFFF;
+}
+
+.result {
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
 .instructions {
     max-height: 300px;
     overflow-y: scroll;
     margin-top: 10px;
 }
 
-
-.sel-rem-btn {
-    height: 39px;
-    background: #dc3545;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 4px;
-    transition: background 0.2s ease;
+.add-sets {
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
-.sel-rem-btn:hover {
-    background: rgba(220, 53, 69, 0.5);
+.add-sets div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 30px;
 }
 
+/*
+ * COMPONENT: EXERCISE SELECTION
+ */
 .selectable-exercise {
     display: flex;
     flex-direction: row;
@@ -87,6 +73,8 @@
     transition: all 0.3s ease;
     cursor: pointer;
     min-height: 50px;
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .selectable-exercise:last-child {
@@ -99,16 +87,30 @@
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-
-.add-sets div{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    padding-bottom: 30px;
+/*
+ * COMPONENT: MUSCLE VISUALIZATION
+ */
+.muscle-svg-target {
+    min-height: 100%;
+    min-width: 100%;
 }
 
+.muscle-svg-target path {
+    fill: gray;
+    transition: fill 0.3s ease-in-out;
+}
+
+.highlight-primary {
+    fill: red !important;
+}
+
+.highlight-secondary {
+    fill: yellow !important;
+}
+
+/*
+ * FORMS & INPUTS
+ */
 .set-input input {
     background: #444;
     border-radius: 5px;
@@ -116,6 +118,24 @@
     border: 2px solid #ccc;
     max-width: 100px;
     color: white;
+}
+
+/*
+ * BUTTONS
+ */
+.sel-rem-btn {
+    height: 39px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.sel-rem-btn:hover {
+    background: rgba(220, 53, 69, 0.5);
 }
 
 .sets-rem-btn {
@@ -129,9 +149,8 @@
     transition: background 0.2s ease;
 }
 
-.sets-rem-btn:hover{
+.sets-rem-btn:hover {
     background: rgba(220, 53, 69, 0.5);
-
 }
 
 .add-sets-btn {
@@ -146,26 +165,3 @@
     border-radius: 20px;
     transition: background 0.2s ease;
 }
-
-.add-sets-btn:hover {
-    background: rgba(99, 247, 195, 0.5);
-}
-
-
-.add-sets {
-    max-height: 500px;
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
-
-.selectable-exercise {
-    max-height: 500px;
-    overflow-y: auto;
-}
-
-
-
-
-
-

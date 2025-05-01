@@ -1,3 +1,6 @@
+/*
+ * RESET & GLOBAL STYLES
+ */
 html, body, #root {
     margin: 0;
     padding: 0;
@@ -5,14 +8,13 @@ html, body, #root {
     width: 100%;
 }
 
+/*
+ * LAYOUT - BASE
+ */
 body {
     display: flex;
     flex-direction: column;
     height: 100%;
-}
-
-button {
-    font-family: 'Inter', sans-serif;
 }
 
 .app-standard {
@@ -35,14 +37,33 @@ button {
     margin-left: 70px;
     width: calc(100% - 70px);
     min-height: 100vh;
+}
+
+/*
+ * TYPOGRAPHY
+ */
+button {
+    font-family: 'Inter', sans-serif;
+}
+
+/*
+ * TRANSITIONS & ANIMATIONS
+ */
+.content-with-sidebar {
     transition: margin-left 0.3s ease, width 0.3s ease;
 }
 
+/*
+ * STATES
+ */
 .vertical-nav-bar.expanded ~ .content-with-sidebar {
     margin-left: 250px;
     width: calc(100% - 250px);
 }
 
+/*
+ * RESPONSIVE DESIGN
+ */
 @media (max-width: 768px) {
     .app-with-sidebar {
         flex-direction: column;

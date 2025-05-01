@@ -1,9 +1,14 @@
+/*
+ * GLOBAL STYLES
+ */
 .highlights-background {
     background-image: linear-gradient(to right, rgb(108, 125, 255), rgb(99, 247, 195));
 }
 
+/*
+ * LAYOUT
+ */
 .outer-container-wrapper-highlights {
-    font-family: montserrat, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,15 +29,37 @@
 }
 
 .highlight {
-    font-family: Inter, sans-serif;
     flex: 0 0 calc(50% - 30px);
     max-width: 500px;
     min-width: 300px;
-    border: solid white 3px;
-    border-radius: 5px;
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
+}
+
+/*
+ * TYPOGRAPHY
+ */
+.outer-container-wrapper-highlights {
+    font-family: montserrat, sans-serif;
+}
+
+.highlight {
+    font-family: Inter, sans-serif;
+}
+
+/*
+ * COLORS
+ */
+.highlight {
     color: white;
     background: transparent;
+}
+
+/*
+ * BORDERS
+ */
+.highlight {
+    border: solid white 3px;
+    border-radius: 5px;
 }

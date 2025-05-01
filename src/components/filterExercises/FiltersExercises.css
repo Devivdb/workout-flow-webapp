@@ -1,7 +1,6 @@
-.muscle-svg .selected {
-    fill: red !important;
-}
-
+/*
+ * CONTAINER LAYOUT
+ */
 .filters-block.filter-apply {
     padding: 2rem;
     background: #1e293b;
@@ -14,10 +13,10 @@
     margin: 0%;
 }
 
-.filters-block h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
+.outer-wapper-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .svg-container {
@@ -26,6 +25,47 @@
     margin-bottom: 2rem;
 }
 
+.drop-down-menu-wrapper {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.drop-down-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.apply-rest-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/*
+ * TYPOGRAPHY
+ */
+.filters-block h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.equipment-label {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.drop-down-menu label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/*
+ * COMPONENT: MUSCLE VISUALIZATION
+ */
 .muscle-svg {
     width: 100%;
     max-width: 300px;
@@ -43,6 +83,9 @@
     stroke-width: 2px;
 }
 
+/*
+ * COMPONENT: DIFFICULTY LEVELS
+ */
 .level-buttons {
     display: flex;
     gap: 1rem;
@@ -72,17 +115,9 @@
     box-shadow: 0 4px 10px rgba(52, 211, 153, 0.5);
 }
 
-.equipment-label {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-
-.outer-wapper-filters {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
+/*
+ * COMPONENT: EQUIPMENT SELECTION
+ */
 .equipment-options {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -108,23 +143,9 @@
     accent-color: #34d399;
 }
 
-.drop-down-menu-wrapper {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.drop-down-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.drop-down-menu label {
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
+/*
+ * FORM ELEMENTS
+ */
 .drop-down-menu-items {
     background: #334155;
     border: none;
@@ -135,13 +156,9 @@
     cursor: pointer;
 }
 
-.apply-rest-btn {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
+/*
+ * BUTTONS
+ */
 .search-btn, .reset-filters-btn {
     width: 100%;
     padding: 1rem;
@@ -167,12 +184,6 @@
     animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(52, 211, 153, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
-}
-
 .reset-filters-btn {
     background: linear-gradient(to right, #818cf8, #6366f1);
     color: black;
@@ -181,4 +192,13 @@
 .reset-filters-btn:hover {
     transform: scale(1.03);
     box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+/*
+ * ANIMATIONS
+ */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(52, 211, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
 }

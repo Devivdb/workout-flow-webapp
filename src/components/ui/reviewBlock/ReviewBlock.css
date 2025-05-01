@@ -1,3 +1,6 @@
+/*
+ * LAYOUT: CONTAINERS
+ */
 .outer-container-wrapper-review {
     display: flex;
     flex-direction: row;
@@ -8,6 +11,9 @@
     box-sizing: border-box;
 }
 
+/*
+ * COMPONENT: REVIEW CARD
+ */
 .review {
     display: flex;
     flex-direction: column;
@@ -27,6 +33,9 @@
     height: auto;
 }
 
+/*
+ * MEDIA QUERIES
+ */
 @media (max-width: 768px) {
     .review {
         flex: 0 0 100%;

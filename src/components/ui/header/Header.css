@@ -1,39 +1,6 @@
-.website-name a {
-    font-family: 'montserrat', sans-serif;
-    font-weight: bold;
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.website-name span {
-    color: #57f0c2;
-}
-
-.menu {
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    width: 100%;
-}
-
-.main-menu {
-    list-style-type: none;
-}
-
-.menu a {
-    text-decoration: none;
-    color: white;
-}
-
-.horizontal-main-menu a:hover,
-.horizontal-sign-in-log-in a:hover {
-    text-decoration: underline;
-}
-
-.logout-button {
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-}
-
+/*
+ * GLOBAL STYLES
+ */
 *:focus {
     outline: none;
 }
@@ -52,4 +19,49 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+/*
+ * LAYOUT: NAVIGATION STRUCTURE
+ */
+.menu {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    width: 100%;
+}
+
+.main-menu {
+    list-style-type: none;
+}
+
+/*
+ * COMPONENT: BRAND/LOGO
+ */
+.website-name a {
+    font-family: 'montserrat', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.website-name span {
+    color: #57f0c2;
+}
+
+/*
+ * LINKS & INTERACTIONS
+ */
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+.horizontal-main-menu a:hover,
+.horizontal-sign-in-log-in a:hover {
+    text-decoration: underline;
+}
+
+.logout-button {
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
 }
