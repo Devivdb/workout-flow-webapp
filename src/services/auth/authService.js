@@ -48,7 +48,15 @@ const authService = {
     },
 
     updateUser: async (data) => {
-        return apiClient.put("/user", data).then((response) => response.data);
+        const updateData = {
+            ...data
+        };
+
+        if (data.password && !data.newPassword) {
+            updateData.password = data.password;
+        }
+
+        return apiClient.put("/user", updateData).then((response) => response.data);
     },
 
     uploadProfileImage: async (imageData) => {

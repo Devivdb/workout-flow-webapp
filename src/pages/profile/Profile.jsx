@@ -5,7 +5,7 @@ import './Profile.css';
 import useBackground from "../../hooks/useBackground.js";
 
 function Profile() {
-    const { user } = useAuth();
+    const { user, updateUserInfo } = useAuth();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -83,19 +83,23 @@ function Profile() {
         setIsSubmitting(true);
 
         try {
-            const updateData = {};
+            const updateData = {
+                password: formData.currentPassword // Required for all updates
+            };
 
             if (hasEmailChange) {
                 updateData.email = formData.email;
             }
 
             if (hasPasswordChange) {
-                updateData.password = formData.password;
-                updateData.repeatedPassword = formData.repeatedPassword;
+                updateData.newPassword = formData.password;
             }
 
-
             await authService.updateUser(updateData);
+
+            // After successful update, refresh the user info in context
+            await updateUserInfo();
+
             setSuccess('Profile updated successfully!');
 
             setFormData(prev => ({
@@ -172,7 +176,7 @@ function Profile() {
                         value={formData.currentPassword}
                         onChange={handleChange}
                         placeholder="Enter your current password"
-                        required={formData.password.length > 0 || formData.email !== user?.email}
+                        required
                     />
                 </div>
 

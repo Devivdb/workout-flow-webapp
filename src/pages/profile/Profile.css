@@ -1,3 +1,13 @@
+/*
+ * GLOBAL STYLES & BACKGROUND
+ */
+.profile-background {
+    background: linear-gradient(to right, rgb(108, 125, 255), rgb(99, 247, 195));
+}
+
+/*
+ * LAYOUT CONTAINERS
+ */
 .profile-container {
     display: flex;
     justify-content: center;
@@ -15,6 +25,18 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.profile-info {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/*
+ * TYPOGRAPHY
+ */
 .profile-form h2 {
     color: white;
     font-size: 32px;
@@ -23,18 +45,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.profile-info {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
 .profile-info p {
     color: white;
     margin: 5px 0;
 }
 
+/*
+ * FORM CONTROLS
+ */
 .form-group {
     margin-bottom: 20px;
 }
@@ -55,6 +73,7 @@
     color: white;
     font-size: 16px;
     transition: border-color 0.3s;
+    box-sizing: border-box;
 }
 
 .form-group input:focus {
@@ -62,6 +81,9 @@
     outline: none;
 }
 
+/*
+ * BUTTON STYLES
+ */
 .update-button {
     width: 100%;
     padding: 12px;
@@ -85,6 +107,9 @@
     cursor: not-allowed;
 }
 
+/*
+ * NOTIFICATION MESSAGES
+ */
 .error-message {
     background-color: rgba(220, 53, 69, 0.1);
     color: #dc3545;
@@ -101,8 +126,4 @@
     border-radius: 5px;
     margin-bottom: 20px;
     font-size: 14px;
-}
-
-.profile-background {
-    background: linear-gradient(to right, rgb(108, 125, 255), rgb(99, 247, 195));
 }

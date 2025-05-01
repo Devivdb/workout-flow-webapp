@@ -68,6 +68,20 @@ export function AuthProvider({ children }) {
         }
     };
 
+    const updateUserInfo = async () => {
+        try {
+            const userData = await authService.getCurrentUser();
+            setUser(userData);
+            return { success: true };
+        } catch (error) {
+            console.error("Failed to update user info:", error);
+            return {
+                success: false,
+                error: error.response?.data?.message || "Failed to update user information."
+            };
+        }
+    };
+
     const logout = () => {
         localStorage.removeItem("token");
         setIsAuth(false);
@@ -83,7 +97,8 @@ export function AuthProvider({ children }) {
                 loading,
                 login,
                 register,
-                logout
+                logout,
+                updateUserInfo
             }}
         >
             {children}
