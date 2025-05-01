@@ -37,26 +37,31 @@ function Profile() {
     };
 
     const validateForm = () => {
-        if (formData.password) {
-            if (formData.password.length < 6) {
+        const { email, password, repeatedPassword, currentPassword } = formData;
+
+        const isEmailChange = email !== user.email;
+        const isPasswordChange = password.length > 0;
+
+        if ((isEmailChange || isPasswordChange) && !currentPassword) {
+            setError('Please enter your current password to confirm changes');
+            return false;
+        }
+
+        if (isPasswordChange) {
+            if (password.length < 6) {
                 setError('Password must be at least 6 characters long');
                 return false;
             }
 
-            if (formData.password !== formData.repeatedPassword) {
+            if (password !== repeatedPassword) {
                 setError('Passwords do not match');
-                return false;
-            }
-
-            if (!formData.currentPassword) {
-                setError('Please enter your current password to confirm changes');
                 return false;
             }
         }
 
-        if (formData.email !== user.email) {
+        if (isEmailChange) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.email)) {
+            if (!emailRegex.test(email)) {
                 setError('Please enter a valid email address');
                 return false;
             }
@@ -64,6 +69,7 @@ function Profile() {
 
         return true;
     };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -83,25 +89,18 @@ function Profile() {
         setIsSubmitting(true);
 
         try {
+            await authService.login(user.username, formData.currentPassword);
+
             const updateData = {
-                password: formData.currentPassword // Required for all updates
+                email: hasEmailChange ? formData.email : undefined,
+                password: hasPasswordChange ? formData.password : undefined,
+                repeatedPassword: hasPasswordChange ? formData.repeatedPassword : undefined,
             };
 
-            if (hasEmailChange) {
-                updateData.email = formData.email;
-            }
-
-            if (hasPasswordChange) {
-                updateData.newPassword = formData.password;
-            }
-
             await authService.updateUser(updateData);
-
-            // After successful update, refresh the user info in context
             await updateUserInfo();
 
             setSuccess('Profile updated successfully!');
-
             setFormData(prev => ({
                 ...prev,
                 password: '',
@@ -110,11 +109,16 @@ function Profile() {
             }));
         } catch (error) {
             console.error('Update failed:', error);
-            setError(error.response?.data?.message || 'Update failed. Please try again.');
+            if (error.response?.status === 401) {
+                setError('Incorrect current password');
+            } else {
+                setError(error.response?.data?.message || 'Update failed. Please try again.');
+            }
         } finally {
             setIsSubmitting(false);
         }
     };
+
 
     useBackground("profile-background")
 

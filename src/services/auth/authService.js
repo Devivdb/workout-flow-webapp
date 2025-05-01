@@ -34,29 +34,44 @@ const authService = {
             .then((response) => response.data);
     },
 
-    login: async (username, password) => {
-        return apiClient
-            .post("/auth/signin", {
-                username,
-                password,
-            })
-            .then((response) => response.data);
-    },
+        login: async (username, password) => {
+            return apiClient
+                .post("/auth/signin", {
+                    username,
+                    password,
+                })
+                .then((response) => {
+                    localStorage.setItem("token", response.data.accessToken);
+                    return response.data;
+                });
+        },
 
     getCurrentUser: async () => {
         return apiClient.get("/user").then((response) => response.data);
     },
 
     updateUser: async (data) => {
-        const updateData = {
-            ...data
-        };
+        try {
+            const updateData = {};
 
-        if (data.password && !data.newPassword) {
-            updateData.password = data.password;
+            if (data.email) {
+                updateData.email = data.email;
+            }
+
+            if (data.password && data.repeatedPassword) {
+                updateData.password = data.password;
+                updateData.repeatedPassword = data.repeatedPassword;
+            }
+
+            if (Object.keys(updateData).length === 0) {
+                return;
+            }
+
+            return await apiClient.put("/user", updateData);
+        } catch (error) {
+            console.error("Update failed:", error);
+            throw error;
         }
-
-        return apiClient.put("/user", updateData).then((response) => response.data);
     },
 
     uploadProfileImage: async (imageData) => {
