@@ -1,16 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import './Footer.css';
 
 function Footer() {
-    const { isAuth } = useAuth();
+    const { isAuth, logout } = useAuth();
 
     return (
         <footer className="footer">
             <div className="footer-container">
                 <div className="footer-sections">
                     <div className="footer-section">
-                        <h4>WorkoutFlow</h4>
+                        <div className="website-name-footer">
+                            <NavLink to="/"><span className="brand-main">Workout</span><span className="brand-accent">Flow</span></NavLink>
+                        </div>
                         <p>Your personal fitness assistant that helps you achieve your fitness goals.</p>
                     </div>
                     <div className="footer-text">
@@ -53,7 +55,7 @@ function Footer() {
                         {isAuth ? (
                             <>
                                 <Link to="/profile" className="footer-link">My Profile</Link>
-                                <span className="footer-link clickable" onClick={() => useAuth().logout()}>Log Out</span>
+                                <span className="footer-link clickable" onClick={logout}>Log Out</span>
                             </>
                         ) : (
                             <>
