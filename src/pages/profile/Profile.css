@@ -14,22 +14,23 @@
     align-items: center;
     min-height: 79vh;
     font-family: 'Inter', sans-serif;
+    padding: var(--spacing-md);
 }
 
 .profile-form {
     background-color: #1e293b;
-    padding: 40px;
+    padding: var(--spacing-lg);
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
     max-width: 500px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .profile-info {
     background-color: rgba(255, 255, 255, 0.05);
-    padding: 15px;
+    padding: var(--spacing-sm);
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-md);
     width: 100%;
     box-sizing: border-box;
 }
@@ -39,8 +40,8 @@
  */
 .profile-form h2 {
     color: white;
-    font-size: 32px;
-    margin-bottom: 24px;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
@@ -48,20 +49,21 @@
 .profile-info p {
     color: white;
     margin: 5px 0;
+    font-size: var(--font-size-base);
 }
 
 /*
  * FORM CONTROLS
  */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-md);
 }
 
 .form-group label {
     display: block;
     color: white;
-    margin-bottom: 8px;
-    font-size: 14px;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
 }
 
 .form-group input {
@@ -71,9 +73,10 @@
     border: 1px solid #444;
     background-color: #333;
     color: white;
-    font-size: 16px;
+    font-size: var(--font-size-base);
     transition: border-color 0.3s;
     box-sizing: border-box;
+    min-height: 44px;
 }
 
 .form-group input:focus {
@@ -91,11 +94,12 @@
     color: #22292D;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: var(--font-size-base);
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: 10px;
+    margin-top: var(--spacing-sm);
+    min-height: 44px;
 }
 
 .update-button:hover {
@@ -113,17 +117,66 @@
 .error-message {
     background-color: rgba(220, 53, 69, 0.1);
     color: #dc3545;
-    padding: 10px;
+    padding: var(--spacing-sm);
     border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 14px;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
 }
 
 .success-message {
     background-color: rgba(40, 167, 69, 0.1);
     color: #28a745;
-    padding: 10px;
+    padding: var(--spacing-sm);
     border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 14px;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-form {
+        padding: var(--spacing-md);
+    }
+
+    .profile-form h2 {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 575px) {
+    .profile-container {
+        padding: var(--spacing-sm);
+    }
+
+    .profile-form {
+        width: 95%;
+        padding: var(--spacing-sm);
+    }
+
+    .profile-info {
+        padding: var(--spacing-xs);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .profile-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .update-button {
+        font-size: 0.95rem;
+    }
+
+    .error-message, .success-message {
+        padding: var(--spacing-xs);
+        font-size: 0.85rem;
+    }
 }
