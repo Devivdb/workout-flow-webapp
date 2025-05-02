@@ -32,6 +32,8 @@
 
 .main-menu {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 /*
@@ -54,6 +56,8 @@
 .menu a {
     text-decoration: none;
     color: white;
+    display: inline-block; /* Better touch target */
+    padding: 0.5rem 0;
 }
 
 .horizontal-main-menu a:hover,
@@ -64,4 +68,19 @@
 .logout-button {
     cursor: pointer;
     font-family: 'Inter', sans-serif;
+    min-height: 44px; /* Touch-friendly */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive typography for navigation */
+@media (max-width: 768px) {
+    .menu a, .logout-button {
+        font-size: 0.95rem;
+    }
+
+    .website-name a {
+        font-size: 1.5rem;
+    }
 }
