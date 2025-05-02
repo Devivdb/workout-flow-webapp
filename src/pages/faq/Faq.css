@@ -9,8 +9,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: var(--spacing-sm);
     min-height: 79vh;
+    padding: var(--spacing-md) var(--container-padding);
 }
 
 /*
@@ -18,15 +19,19 @@
  */
 .outer-container-wrapper-faq h1 {
     font-family: Montserrat, sans-serif;
-    padding-top: 20px;
+    padding-top: var(--spacing-md);
     color: #1e293b;
+    text-align: center;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
 }
 
 .answer {
-    margin-top: 10px;
+    margin-top: var(--spacing-sm);
     font-size: 0.9rem;
     line-height: 1.5;
     color: #d1d5db;
+    padding: 0 var(--spacing-sm);
 }
 
 /*
@@ -34,18 +39,20 @@
  */
 .question {
     background-color: #1e293b;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     border-radius: 5px;
     color: white;
     font-family: Inter, sans-serif;
-    padding: 10px;
+    padding: var(--spacing-sm);
     transition: all 0.3s ease;
     overflow: hidden;
     cursor: pointer;
+    margin-bottom: var(--spacing-sm);
 }
 
 .question.expanded {
-    padding-bottom: 20px;
+    padding-bottom: var(--spacing-md);
 }
 
 .question:hover {
@@ -56,6 +63,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 44px; /* Touch-friendly */
+}
+
+.question-header p {
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    margin: 0;
+    padding: var(--spacing-xs) 0;
 }
 
 /*
@@ -65,8 +80,54 @@
     transition: transform 0.3s ease;
     color: white;
     max-width: 50px;
+    width: 24px;
+    height: 24px;
 }
 
 .arrow-active {
     transform: rotate(180deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .outer-container-wrapper-faq {
+        padding: var(--spacing-sm);
+    }
+
+    .outer-container-wrapper-faq h1 {
+        font-size: var(--font-size-xl);
+        padding-top: var(--spacing-sm);
+    }
+
+    .question {
+        width: 90%;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 575px) {
+    .outer-container-wrapper-faq h1 {
+        font-size: 1.5rem;
+    }
+
+    .question {
+        width: 95%;
+        max-width: 95%;
+        padding: var(--spacing-xs);
+    }
+
+    .question-header p {
+        font-size: 0.9rem;
+        flex: 1;
+    }
+
+    .arrow {
+        width: 20px;
+        height: 20px;
+    }
+
+    .answer {
+        font-size: 0.85rem;
+        padding: 0 var(--spacing-xs);
+    }
 }
