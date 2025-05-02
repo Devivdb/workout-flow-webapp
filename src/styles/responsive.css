@@ -1,0 +1,48 @@
+/* src/styles/responsive.css */
+
+/* Responsive Breakpoints
+ * ------------------
+ * xs: 0-575px (phones)
+ * sm: 576px-767px (large phones, small tablets)
+ * md: 768px-991px (tablets)
+ * lg: 992px-1199px (desktops)
+ * xl: 1200px+ (large desktops)
+ */
+
+:root {
+    --breakpoint-xs: 575px;
+    --breakpoint-sm: 767px;
+    --breakpoint-md: 991px;
+    --breakpoint-lg: 1199px;
+
+    /* Responsive spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Responsive font sizes */
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 2.5rem;
+
+    /* For mobile first approach */
+    --container-padding: var(--spacing-sm);
+}
+
+/* Update for larger screens */
+@media (min-width: 768px) {
+    :root {
+        --container-padding: var(--spacing-md);
+        --font-size-base: 1.1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    :root {
+        --container-padding: var(--spacing-lg);
+    }
+}

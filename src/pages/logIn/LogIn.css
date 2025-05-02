@@ -13,42 +13,73 @@
     justify-content: center;
     align-items: center;
     min-height: 79vh;
+    padding: var(--spacing-md);
 }
 
 .login-form {
-    padding: 40px;
-    width: 100%;
+    background-color: #1e293b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+    width: 90%;
     max-width: 400px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-md);
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: var(--spacing-xs);
 }
 
 .form-group input {
     width: 100%;
     padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: white;
+    font-size: var(--font-size-base);
+    transition: border-color 0.3s;
+    min-height: 44px;
 }
 
 .login-button {
     width: 100%;
     padding: 12px;
-    margin-top: 10px;
+    margin-top: var(--spacing-sm);
+    background-color: rgb(99, 247, 195);
+    color: #22292D;
+    border: none;
+    border-radius: 5px;
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-height: 44px;
 }
 
 .error-message {
-    padding: 10px;
-    margin-bottom: 20px;
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    padding: var(--spacing-sm);
+    border-radius: 5px;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
 }
 
 .signup-link {
-    margin-top: 20px;
+    margin-top: var(--spacing-md);
     text-align: center;
+    color: white;
+    font-size: var(--font-size-base);
+}
+
+.signup-link a {
+    color: rgb(99, 247, 195);
+    text-decoration: none;
 }
 
 /*
@@ -59,100 +90,16 @@
 }
 
 .login-form h2 {
-    font-size: 32px;
-    margin-bottom: 24px;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-}
-
-.form-group label {
-    font-size: 14px;
-}
-
-.form-group input {
-    font-size: 16px;
-}
-
-.login-button {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.error-message {
-    font-size: 14px;
-}
-
-/*
- * COLORS
- */
-.login-form {
-    background-color: #1e293b;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.login-form h2 {
     color: white;
 }
 
 .form-group label {
+    font-size: 0.9rem;
     color: white;
-}
-
-.form-group input {
-    border: 1px solid #444;
-    background-color: #333;
-    color: white;
-}
-
-.login-button {
-    background-color: rgb(99, 247, 195);
-    color: #22292D;
-    border: none;
-}
-
-.error-message {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: #dc3545;
-}
-
-.signup-link {
-    color: white;
-}
-
-.signup-link a {
-    color: rgb(99, 247, 195);
-    text-decoration: none;
-}
-
-/*
- * BORDERS & SHAPES
- */
-.login-form {
-    border-radius: 10px;
-}
-
-.form-group input {
-    border-radius: 5px;
-}
-
-.login-button {
-    border-radius: 5px;
-}
-
-.error-message {
-    border-radius: 5px;
-}
-
-/*
- * TRANSITIONS & ANIMATIONS
- */
-.form-group input {
-    transition: border-color 0.3s;
-}
-
-.login-button {
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 /*
@@ -174,4 +121,49 @@
 
 .signup-link a:hover {
     text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login-form {
+        padding: var(--spacing-md);
+    }
+
+    .login-form h2 {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 575px) {
+    .login-container {
+        padding: var(--spacing-sm);
+    }
+
+    .login-form {
+        width: 95%;
+        padding: var(--spacing-sm);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .login-button {
+        font-size: 0.95rem;
+    }
+
+    .error-message {
+        padding: var(--spacing-xs);
+        font-size: 0.85rem;
+    }
+
+    .signup-link {
+        font-size: 0.9rem;
+    }
 }

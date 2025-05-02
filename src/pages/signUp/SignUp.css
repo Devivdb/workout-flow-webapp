@@ -13,101 +13,61 @@
     justify-content: center;
     align-items: center;
     min-height: 79vh;
+    padding: var(--spacing-md);
 }
 
 .signup-form {
-    padding: 40px;
-    width: 100%;
+    background-color: #1e293b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+    width: 90%;
     max-width: 400px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-md);
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
+    color: white;
 }
 
 .form-group input {
     width: 100%;
     padding: 12px;
-}
-
-.signup-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-}
-
-.error-message, .success-message {
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-.login-link {
-    margin-top: 20px;
-    text-align: center;
-}
-
-/*
- * TYPOGRAPHY
- */
-.signup-container {
-    font-family: 'Inter', sans-serif;
-}
-
-.signup-form h2 {
-    font-size: 32px;
-    margin-bottom: 24px;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.form-group label {
-    font-size: 14px;
-}
-
-.form-group input {
-    font-size: 16px;
-}
-
-.signup-button {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.error-message, .success-message {
-    font-size: 14px;
-}
-
-/*
- * COLORS
- */
-.signup-form {
-    background-color: #1e293b;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.signup-form h2 {
-    color: white;
-}
-
-.form-group label {
-    color: white;
-}
-
-.form-group input {
+    border-radius: 5px;
     border: 1px solid #444;
     background-color: #333;
     color: white;
+    font-size: var(--font-size-base);
+    transition: border-color 0.3s;
+    min-height: 44px;
 }
 
 .signup-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: var(--spacing-sm);
     background-color: rgb(99, 247, 195);
     color: #22292D;
     border: none;
+    border-radius: 5px;
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-height: 44px;
+}
+
+.error-message, .success-message {
+    padding: var(--spacing-sm);
+    border-radius: 5px;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
 }
 
 .error-message {
@@ -121,7 +81,10 @@
 }
 
 .login-link {
+    margin-top: var(--spacing-md);
+    text-align: center;
     color: white;
+    font-size: var(--font-size-base);
 }
 
 .login-link a {
@@ -130,34 +93,18 @@
 }
 
 /*
- * BORDERS & SHAPES
+ * TYPOGRAPHY
  */
-.signup-form {
-    border-radius: 10px;
+.signup-container {
+    font-family: 'Inter', sans-serif;
 }
 
-.form-group input {
-    border-radius: 5px;
-}
-
-.signup-button {
-    border-radius: 5px;
-}
-
-.error-message, .success-message {
-    border-radius: 5px;
-}
-
-/*
- * TRANSITIONS & ANIMATIONS
- */
-.form-group input {
-    transition: border-color 0.3s;
-}
-
-.signup-button {
-    cursor: pointer;
-    transition: background-color 0.3s;
+.signup-form h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
 }
 
 /*
@@ -179,4 +126,49 @@
 
 .login-link a:hover {
     text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .signup-form {
+        padding: var(--spacing-md);
+    }
+
+    .signup-form h2 {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 575px) {
+    .signup-container {
+        padding: var(--spacing-sm);
+    }
+
+    .signup-form {
+        width: 95%;
+        padding: var(--spacing-sm);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .signup-button {
+        font-size: 0.95rem;
+    }
+
+    .error-message, .success-message {
+        padding: var(--spacing-xs);
+        font-size: 0.85rem;
+    }
+
+    .login-link {
+        font-size: 0.9rem;
+    }
 }

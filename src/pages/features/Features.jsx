@@ -6,11 +6,8 @@ import Workoutbuilder from "/src/assets/pictures/Workoutbuilder.png"
 import PDFexport from "/src/assets/pictures/PDFexport.png"
 
 function Features() {
-
     useBackground("features-background")
     const [selectedImage, setSelectedImage] = useState(Workoutbuilder)
-
-    useBackground("features-background")
 
     const images = {
         feature1: exerciseFinder,
@@ -31,6 +28,9 @@ function Features() {
                     <div className="features-wrapper">
                         <div className="feature-item"
                              onClick={() => handleClick("feature3")}
+                             tabIndex="0"
+                             role="button"
+                             aria-label="Export Workouts to PDF, CSV, and JSON"
                         >
                             <h3>Export Workouts to PDF, CSV, and JSON</h3>
                             <p>
@@ -40,6 +40,9 @@ function Features() {
                         </div>
                         <div className="feature-item"
                              onClick={() => handleClick("feature1")}
+                             tabIndex="0"
+                             role="button"
+                             aria-label="Interactive Exercise Library"
                         >
                             <h3>Interactive Exercise Library</h3>
                             <p>
@@ -49,8 +52,11 @@ function Features() {
                         </div>
                         <div className="feature-item"
                              onClick={() => handleClick("feature2")}
+                             tabIndex="0"
+                             role="button"
+                             aria-label="Progress Tracking & Workout History"
                         >
-                            <h3>Progress Tracking & Workout History (in development)</h3>
+                            <h3>Progress Tracking & Workout History</h3>
                             <p>
                                 Keep track of your completed workouts and monitor your progress over time. Stay
                                 motivated with detailed workout history and performance insights.
@@ -58,13 +64,16 @@ function Features() {
                         </div>
                     </div>
                 </div>
-                <span className="image-wrapper">
-                    <img src={selectedImage} alt="Features"/>
-                </span>
+                <div className="image-wrapper">
+                    <img
+                        src={selectedImage}
+                        alt="WorkoutFlow Feature Screenshot"
+                        loading="lazy"
+                    />
+                </div>
             </div>
-
         </>
     );
-};
+}
 
 export default Features;
