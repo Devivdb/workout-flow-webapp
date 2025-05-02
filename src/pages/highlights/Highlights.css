@@ -1,12 +1,12 @@
 /*
- * GLOBAL STYLES
+ * BACKGROUND
  */
 .highlights-background {
-    background-image: linear-gradient(to right, rgb(108, 125, 255), rgb(99, 247, 195));
+    background-image: linear-gradient(135deg, rgb(108, 125, 255), rgb(99, 247, 195));
 }
 
 /*
- * LAYOUT
+ * CONTAINER LAYOUT
  */
 .outer-container-wrapper-highlights {
     display: flex;
@@ -14,52 +14,58 @@
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
 }
 
 .outer-container-wrapper-highlights h1 {
-    margin: 40px;
+    font-size: 2.5rem;
+    color: #1e293b;
+    margin-bottom: 40px;
 }
 
+/*
+ * INNER FLEX WRAPPER
+ */
 .inner-container-wrapper-highlights {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 50px;
-    margin-bottom: 50px;
-}
-
-.highlight {
-    flex: 0 0 calc(50% - 30px);
-    max-width: 500px;
-    min-width: 300px;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
+    gap: 40px;
+    margin-bottom: 40px;
 }
 
 /*
- * TYPOGRAPHY
- */
-.outer-container-wrapper-highlights {
-    font-family: montserrat, sans-serif;
-}
-
-.highlight {
-    font-family: Inter, sans-serif;
-}
-
-/*
- * COLORS
+ * INDIVIDUAL HIGHLIGHT CARD
  */
 .highlight {
+    flex: 1 1 300px;
+    min-width: 400px;
+    padding: 24px;
     color: white;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Inter', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 /*
- * BORDERS
+ * RESPONSIVENESS
  */
-.highlight {
-    border: solid white 3px;
-    border-radius: 5px;
+@media (max-width: 768px) {
+    .highlight {
+        flex: 1 1 100%;
+    }
+
+    .outer-container-wrapper-highlights h1 {
+        font-size: 2rem;
+    }
 }

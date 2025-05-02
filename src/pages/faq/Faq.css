@@ -2,7 +2,7 @@
  * BACKGROUNDS & CONTAINERS
  */
 .faq-background {
-    background-image: linear-gradient(to right, rgb(253, 146, 242), rgb(81, 114, 248));
+    background-image: linear-gradient(to right, rgb(108, 125, 255), rgb(99, 247, 195));
 }
 
 .outer-container-wrapper-faq {
@@ -19,6 +19,7 @@
 .outer-container-wrapper-faq h1 {
     font-family: Montserrat, sans-serif;
     padding-top: 20px;
+    color: #1e293b;
 }
 
 .answer {

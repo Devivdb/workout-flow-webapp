@@ -19,7 +19,7 @@
 .intro-text {
     max-width: 570px;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 10px;
     padding-bottom: 40px;
 }
 
@@ -33,12 +33,12 @@
  */
 .intro-text-home-page {
     font-family: montserrat, sans-serif;
-    font-size: 50px;
+    font-size: 70px;
 }
 
 .intro-text {
     font-family: montserrat, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -52,7 +52,7 @@
  */
 .intro-text-home-page {
     background: linear-gradient(to right, rgb(253, 146, 242), rgb(167, 130, 245), rgb(81, 114, 248) 90%);
-    background-size: 650px;
+    background-repeat: no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -64,8 +64,35 @@
 }
 
 .generate-button {
-    background-color: rgb(99, 247, 195);
+    width: 300px;
+    height: 75px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 12px;
+    background-color: #00ffc8; /* energetic neon green */
+    color: #0f172a; /* dark navy for contrast */
+    cursor: pointer;
+
+    box-shadow: 0 4px 16px rgba(0, 255, 200, 0.3);
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.generate-button:hover {
+    background-color: #007aff; /* powerful blue for hover */
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(0, 122, 255, 0.4);
+}
+
+.generate-button:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+
 
 /*
  * BORDERS & SHAPES
