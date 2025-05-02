@@ -122,6 +122,7 @@
     text-decoration: none;
     width: 100%;
     justify-content: flex-start;
+    min-height: 44px; /* Touch-friendly */
 }
 
 .vertical-main-menu li a:hover,
@@ -214,9 +215,100 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
+    min-height: 44px;
 }
 
 .vertical-nav-bar:not(.expanded) .logout-button {
     width: 40px;
     padding: 10px 0;
+}
+
+/* Enhance mobile navigation experience */
+@media (max-width: 768px) {
+    .vertical-nav-bar {
+        height: auto !important;
+        position: relative;
+        min-height: unset;
+        width: 100% !important;
+    }
+
+    .vertical-nav-bar.expanded {
+        width: 100% !important;
+    }
+
+    .vertical-menu {
+        padding: var(--spacing-sm) 0;
+    }
+
+    .header-top {
+        flex-direction: row !important;
+        justify-content: space-between;
+        margin-bottom: var(--spacing-sm);
+        padding: 0 var(--spacing-md);
+    }
+
+    .vertical-website-name {
+        text-align: left;
+    }
+
+    .vertical-website-name a {
+        justify-content: flex-start;
+    }
+
+    .vertical-main-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        margin: var(--spacing-sm) 0;
+    }
+
+    .vertical-main-menu li {
+        width: auto;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .vertical-main-menu li a {
+        width: auto !important;
+        height: auto !important;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 5px;
+    }
+
+    .vertical-main-menu li a.active {
+        width: auto !important;
+    }
+
+    .vertical-sign-in-log-in {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-sm) 0;
+    }
+
+    .vertical-sign-in-log-in .user-welcome {
+        width: auto;
+        margin-bottom: 0;
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 575px) {
+    .vertical-main-menu {
+        gap: var(--spacing-xs);
+    }
+
+    .vertical-main-menu li a {
+        padding: var(--spacing-xs);
+        font-size: 0.9rem;
+    }
+
+    .toggle-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .vertical-sign-in-log-in {
+        flex-direction: column;
+    }
 }
