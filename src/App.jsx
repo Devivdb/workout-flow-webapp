@@ -1,4 +1,5 @@
 import './App.css'
+import './styles/responsive.css' // Import responsive design system
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "./context/authContext/AuthContext";
 import useAuth from "./hooks/useAuth";
