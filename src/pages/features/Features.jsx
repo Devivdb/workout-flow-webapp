@@ -8,7 +8,7 @@ import PDFexport from "/src/assets/pictures/PDFexport.png"
 function Features() {
 
     useBackground("features-background")
-    const [selectedImage, setSelectedImage] = useState(exerciseFinder)
+    const [selectedImage, setSelectedImage] = useState(Workoutbuilder)
 
     useBackground("features-background")
 
