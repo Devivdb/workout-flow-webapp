@@ -53,7 +53,7 @@ function Search() {
 
     return (
         <>
-            <div className="outer-container-search">
+            <div className="search-page outer-container-search">
                 <FiltersExercises
                     className="filters-results"/>
                 <FilteredExercisesList
