@@ -56,7 +56,7 @@ function Features() {
                              role="button"
                              aria-label="Progress Tracking & Workout History"
                         >
-                            <h3>Progress Tracking & Workout History</h3>
+                            <h3>Progress Tracking & Workout History <p>(in development)</p> </h3>
                             <p>
                                 Keep track of your completed workouts and monitor your progress over time. Stay
                                 motivated with detailed workout history and performance insights.
