@@ -66,9 +66,9 @@ function FiltersExercises() {
                         Intermediate
                     </button>
                     <button
-                        onClick={() => setSelectedLevel("advanced")}
-                        className={`level-button ${selectedLevel === "advanced" ? "active" : ""}`}
-                        disabled={selectedLevel === "advanced"}
+                        onClick={() => setSelectedLevel("expert")}
+                        className={`level-button ${selectedLevel === "expert" ? "active" : ""}`}
+                        disabled={selectedLevel === "expert"}
                     >
                         Advanced
                     </button>

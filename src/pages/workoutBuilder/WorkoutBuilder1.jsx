@@ -109,6 +109,81 @@ function WorkoutBuilder1() {
         doc.save("workout plan.pdf");
     };
 
+    const generateRandomWorkout = async () => {
+        const availableMuscleGroups = [
+            "quadriceps", "shoulders", "abdominals", "chest", "hamstrings", "triceps",
+            "biceps", "lats", "middle_back", "forearms", "glutes", "traps", "adductors",
+            "abductors", "neck"
+        ];
+
+        const selectedMuscles = availableMuscleGroups
+            .sort(() => 0.5 - Math.random())
+            .slice(0, Math.floor(Math.random() * 3) + 1);
+
+        console.log("Selected muscles:", selectedMuscles);
+
+        const fetchPromises = selectedMuscles.map(muscle =>
+            fetchExercisesByEquipment(muscle)
+        );
+
+        const results = await Promise.all(fetchPromises);
+
+        const allExercises = results.flat();
+
+        const strengthExercises = allExercises.filter(ex => ex.category === 'strength');
+
+        const uniqueExercises = Array.from(new Map(
+            strengthExercises.map(ex => [ex.id, ex])
+        ).values());
+
+        if (!uniqueExercises.length) {
+            alert("No strength exercises found for the selected muscle groups. Please try again.");
+            return;
+        }
+
+        const selectedExercises = uniqueExercises
+            .sort(() => 0.5 - Math.random())
+            .slice(0, Math.floor(Math.random() * 3) + 10);
+
+        const workoutPlan = selectedExercises.map(exercise => ({
+            name: exercise.name,
+            sets: Math.floor(Math.random() * 2) + 3,
+            level: exercise.level,
+            equipment: exercise.equipment,
+            force: exercise.force,
+            primaryMuscles: exercise.primaryMuscles,
+            mechanic: exercise.mechanic
+        }));
+
+        const doc = new jsPDF();
+        doc.setFontSize(18);
+        doc.text("Random Workout", 20, 20);
+        doc.setFontSize(12);
+
+        let y = 30;
+        workoutPlan.forEach((exercise, index) => {
+            if (y + 40 > 280) {
+                doc.addPage();
+                y = 20;
+            }
+
+            doc.setFontSize(12);
+            doc.text(`${index + 1}. ${exercise.name}`, 20, y);
+            doc.setFontSize(10);
+            doc.text(`- Level: ${exercise.level || "N/A"}`, 20, y + 5);
+            doc.text(`- Equipment: ${exercise.equipment || "N/A"}`, 20, y + 10);
+            doc.text(`- Force: ${exercise.force || "N/A"}`, 20, y + 15);
+            doc.text(`- Muscle: ${exercise.primaryMuscles?.[0] || "N/A"}`, 20, y + 20);
+            doc.text(`- Mechanic: ${exercise.mechanic || "N/A"}`, 20, y + 25);
+            doc.text(`- Sets: ${exercise.sets}`, 20, y + 30);
+
+            y += 40;
+        });
+
+
+        doc.save("random-workout.pdf");
+    };
+
     return (
         <>
             <div className="workout-builder-toolbar">
@@ -117,6 +192,9 @@ function WorkoutBuilder1() {
                     <button onClick={exportAsJSON}>Export JSON</button>
                     <button onClick={exportAsCSV}>Export CSV</button>
                     <button onClick={exportAsPDF}>Export PDF</button>
+                    <button onClick={generateRandomWorkout}>
+                        Generate Random Workout & Download PDF
+                    </button>
                 </div>
             </div>
             <div className="workout-builder-container">
