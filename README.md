@@ -4,7 +4,7 @@
 
 Workout Flow is een React-gebaseerde webapplicatie voor het bouwen en beheren van workouts. De applicatie gebruikt Vite als development server en build tool.
 
-![Workout builder page](src/assets/pictures/Workout builder.png)
+![Workout builder page](src/assets/pictures/Workoutbuilder.png)
 
 ## Benodigdheden
 Om deze applicatie lokaal te draaien, heb je het volgende nodig:
